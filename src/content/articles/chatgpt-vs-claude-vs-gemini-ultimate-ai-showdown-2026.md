@@ -35,7 +35,8 @@ Let's talk money first, because this is where most people start their decision.
 |---------|---------|--------|--------|
 | Free tier | Yes (GPT-4o mini) | Yes (Claude Sonnet) | Yes (Gemini Flash) |
 | Pro plan | $20/month | $20/month | $19.99/month |
-| Top-tier plan | $200/month (Pro) | $100/month (Max) | $249/month (Ultra) |
+| Mid-tier plan | — | $100/month (Max 5) | — |
+| Top-tier plan | $200/month (Pro) | $200/month (Max 20) | $249/month (Ultra) |
 | API pricing (input) | $2.50/1M tokens | $3/1M tokens | $1.25/1M tokens |
 | API pricing (output) | $10/1M tokens | $15/1M tokens | $5/1M tokens |
 | Free message limits | ~80/3hrs (GPT-4o) | ~30/day (Sonnet) | ~60/day |
@@ -43,7 +44,7 @@ Let's talk money first, because this is where most people start their decision.
 
 The free tiers are surprisingly capable across all three. If you're a casual user, you honestly might never need to upgrade. But for power users, the paid plans unlock significantly better models and higher usage limits.
 
-**Best value for individuals:** Claude Pro at $20/month gives you access to Opus-level intelligence with generous limits. ChatGPT Plus is equally priced but the $200 Pro tier feels steep unless you're a heavy API user.
+**Best value for individuals:** Claude Pro at $20/month gives you access to Opus-level intelligence, but power users will quickly hit limits. For serious work, Max 5 at $100/month or Max 20 at $200/month is practically mandatory — even enterprise teams find the $200 tier barely sufficient. ChatGPT Plus is equally priced but the $200 Pro tier is comparable.
 
 **Best value for teams:** Gemini wins here if your organization already uses Google Workspace. The integration alone saves hours per week.
 

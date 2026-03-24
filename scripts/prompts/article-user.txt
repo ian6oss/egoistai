@@ -1,0 +1,71 @@
+Generate a complete article for EgoistAI.com.
+
+ARTICLE DETAILS:
+- Slug: __SLUG__
+- Title: __TITLE__
+- Category: __CATEGORY__
+- Target keyword: __KEYWORD__
+
+REQUIRED FRONTMATTER FORMAT (output exactly this YAML structure):
+---
+title: "__TITLE__"
+excerpt: "[Write a compelling 1-2 sentence hook that makes people want to click. 140-180 chars.]"
+category: "__CATEGORY_DISPLAY__"
+categorySlug: "__CATEGORY__"
+image: "__IMAGE_PATH__"
+date: "__DATE__"
+readTime: "[X] min read"
+author: "EgoistAI"
+featured: false
+tags: [include 5-8 relevant tags as quoted strings]
+sources:
+  - name: "[Source name - official docs, reputable tech publication, etc.]"
+    url: "[real URL]"
+  - name: "[Another source]"
+    url: "[real URL]"
+  - name: "[Third source]"
+    url: "[real URL]"
+---
+
+ARTICLE BODY REQUIREMENTS:
+1. Start with a hook that grabs attention — a bold claim, surprising stat, or relatable pain point
+2. Include the target keyword naturally in the first 100 words
+3. Use ## for main sections, ### for subsections
+4. Structure varies by category:
+
+FOR TOOLS/COMPARISONS:
+- Quick verdict at the top (who should use what)
+- Feature comparison with specifics (not vague "it's great")
+- Pricing breakdown with actual numbers
+- Pros/Cons for each option
+- Personal recommendation
+
+FOR NEWS:
+- What happened (facts first)
+- Why it matters (analysis)
+- What's next (predictions with reasoning)
+- What you should do about it
+
+FOR TUTORIALS:
+- Prerequisites clearly stated
+- Step-by-step with code examples or screenshots
+- Common pitfalls and how to avoid them
+- Expected results at each step
+
+FOR MONEY:
+- Be realistic about income potential
+- Include actual strategies, not theory
+- Time investment vs. return analysis
+- Real examples and case studies
+
+FOR PEOPLE:
+- Timeline of key events
+- Include real quotes where possible
+- Analysis of their impact on the industry
+- What to watch for next
+
+5. 1500-3000 words total
+6. End with a clear takeaway or call to action
+7. Write for an audience that is tech-savvy but not necessarily developers
+
+IMPORTANT: Output ONLY the raw markdown. No code fences, no explanations before or after.

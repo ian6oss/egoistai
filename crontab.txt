@@ -1,0 +1,3 @@
+# EgoistAI - publish 2 articles at 4AM and 10AM UTC (1PM and 7PM KST)
+0 4 * * * cd /Users/ian/egoistai && bash scripts/publish-from-drafts.sh 2 && npm run build && git add -A && git commit -m "content(auto): publish 2 articles $(date +\%Y-\%m-\%d)" && git push >> /Users/ian/egoistai/logs/cron.log 2>&1
+0 10 * * * cd /Users/ian/egoistai && bash scripts/publish-from-drafts.sh 2 && npm run build && git add -A && git commit -m "content(auto): publish 2 articles $(date +\%Y-\%m-\%d)" && git push >> /Users/ian/egoistai/logs/cron.log 2>&1
