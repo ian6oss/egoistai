@@ -22,43 +22,21 @@ const categories = [
 
 <BaseLayout title="EgoistAI — AI Tools, News & Insights for Builders">
 
-  <!-- Hero Section -->
-  <section class="gradient-hero py-16 md:py-24 border-b border-white/5">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
-        AI Tools, News & Insights<br />
-        <span class="text-[var(--color-primary)] glow-green">For People Who Ship</span>
-      </h1>
-      <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-        Curated reviews, tutorials, and the latest AI news for builders, creators, and power users. No fluff — just signal.
-      </p>
-      <form id="newsletter-form-hero" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email address"
-          required
-          class="flex-1 px-4 py-3 rounded-lg text-white bg-white/10 border border-white/10 placeholder-gray-500 focus:outline-none focus:border-[var(--color-primary)]/50 focus:ring-1 focus:ring-[var(--color-primary)]/30"
-        />
-        <button type="submit" class="px-6 py-3 bg-[var(--color-primary)] text-[var(--color-secondary)] font-bold rounded-lg hover:bg-[var(--color-primary)]/90 transition-colors whitespace-nowrap">
-          Subscribe Free
-        </button>
-      </form>
-      <p class="text-gray-600 text-xs mt-3">Join 5,000+ builders. No spam, ever.</p>
-    </div>
-  </section>
-
+  <!-- Hero: Featured Article -->
   {featuredArticle && (
-    <!-- Featured Article -->
-    <section class="py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="gradient-hero border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <a href={`/articles/${featuredArticle.id}`} class="block relative rounded-2xl overflow-hidden group bg-[var(--color-card-bg)] border border-white/5 card-hover">
           <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="aspect-[16/9] lg:aspect-auto overflow-hidden">
+            <div class="aspect-[16/9] lg:aspect-auto lg:min-h-[400px] overflow-hidden">
               <img
                 src={featuredArticle.data.image}
                 alt={featuredArticle.data.title}
+                width="800"
+                height="450"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
             <div class="p-6 md:p-10 flex flex-col justify-center">
@@ -70,10 +48,10 @@ const categories = [
                   {featuredArticle.data.category}
                 </span>
               </div>
-              <h2 class="text-2xl md:text-3xl font-black text-white leading-tight mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+              <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                 {featuredArticle.data.title}
-              </h2>
-              <p class="text-gray-400 mb-4 line-clamp-3">{featuredArticle.data.excerpt}</p>
+              </h1>
+              <p class="text-gray-400 mb-4 text-base md:text-lg line-clamp-3">{featuredArticle.data.excerpt}</p>
               <div class="flex items-center gap-3 text-sm text-gray-500">
                 <span>{featuredArticle.data.readTime}</span>
                 <span>&middot;</span>
@@ -81,9 +59,16 @@ const categories = [
                   {new Date(featuredArticle.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </time>
               </div>
+              <span class="inline-flex items-center gap-2 mt-6 text-[var(--color-primary)] font-semibold text-sm group-hover:gap-3 transition-all">
+                Read article
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
             </div>
           </div>
         </a>
+        <p class="text-center text-gray-500 text-sm mt-6 max-w-2xl mx-auto">
+          AI tools, news & insights for builders, creators, and power users. No fluff — just signal.
+        </p>
       </div>
     </section>
   )}
