@@ -1,0 +1,312 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  article?: boolean;
+}
+
+const {
+  title,
+  description = "AI Tools, News & Insights for builders, creators, and power users. Reviews, tutorials, and the latest in artificial intelligence.",
+  ogImage = "/og-default.webp",
+  article = false
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const categories = [
+  { name: "Tools", slug: "tools", icon: "wrench" },
+  { name: "News", slug: "news", icon: "bolt" },
+  { name: "Tutorials", slug: "tutorials", icon: "book" },
+  { name: "Money", slug: "money", icon: "dollar" },
+  { name: "People", slug: "people", icon: "users" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title="EgoistAI RSS Feed" href="/feed.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="EgoistAI" />
+    <meta name="theme-color" content="#00FF88" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="EgoistAI" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EgoistAI",
+      "url": "https://egoistai.com",
+      "logo": "https://egoistai.com/favicon.svg",
+      "description": "AI Tools, News & Insights for builders, creators, and power users.",
+      "sameAs": [
+        "https://twitter.com/egoistai",
+        "https://github.com/egoistai"
+      ]
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[var(--color-dark-bg)]">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[var(--color-secondary)]/95 backdrop-blur-md border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-1.5">
+            <span class="text-2xl font-black text-[var(--color-primary)] glow-green">Egoist</span><span class="text-2xl font-black text-white">AI</span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-6">
+            {categories.map(cat => (
+              <a href={`/articles/category/${cat.slug}`} class="text-sm font-medium text-gray-400 hover:text-[var(--color-primary)] transition-colors">
+                {cat.name}
+              </a>
+            ))}
+          </div>
+
+          <!-- Search placeholder -->
+          <div class="hidden md:flex items-center gap-3">
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search articles..."
+                class="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-[var(--color-primary)]/50 focus:ring-1 focus:ring-[var(--color-primary)]/30 w-48"
+              />
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/5 text-gray-400" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <div class="flex flex-col gap-1">
+            {categories.map(cat => (
+              <a href={`/articles/category/${cat.slug}`} class="px-3 py-2 text-sm font-medium text-gray-400 hover:text-[var(--color-primary)] hover:bg-white/5 rounded-lg transition-colors">
+                {cat.name}
+              </a>
+            ))}
+          </div>
+          <!-- Mobile Search -->
+          <div class="mt-3 px-3">
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search articles..."
+                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-[var(--color-primary)]/50"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Newsletter CTA Banner -->
+    <section class="gradient-cta py-16">
+      <div class="max-w-2xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-3">Stay ahead of the AI curve</h2>
+        <p class="text-white/80 mb-6">Get the best AI tools, news, and insights delivered weekly. Join thousands of builders and creators.</p>
+        <form id="newsletter-form-footer-cta" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email address"
+            required
+            class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+          <button type="submit" class="px-6 py-3 bg-[var(--color-secondary)] text-[var(--color-primary)] font-semibold rounded-lg hover:bg-[var(--color-secondary)]/90 transition-colors whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-white/60 text-xs mt-3">No spam. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-secondary)] text-white py-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div>
+            <a href="/" class="flex items-center gap-1.5 mb-3">
+              <span class="text-xl font-black text-[var(--color-primary)]">Egoist</span><span class="text-xl font-black text-white">AI</span>
+            </a>
+            <p class="text-gray-500 text-sm">AI tools, news, and insights for builders, creators, and power users.</p>
+          </div>
+
+          <!-- Categories -->
+          <div>
+            <h3 class="font-semibold text-gray-300 mb-3">Categories</h3>
+            <div class="flex flex-col gap-1.5">
+              {categories.map(cat => (
+                <a href={`/articles/category/${cat.slug}`} class="text-gray-500 hover:text-[var(--color-primary)] text-sm transition-colors">
+                  {cat.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h3 class="font-semibold text-gray-300 mb-3">Links</h3>
+            <div class="flex flex-col gap-1.5">
+              <a href="/about" class="text-gray-500 hover:text-[var(--color-primary)] text-sm transition-colors">About</a>
+              <a href="/privacy" class="text-gray-500 hover:text-[var(--color-primary)] text-sm transition-colors">Privacy Policy</a>
+              <a href="/terms" class="text-gray-500 hover:text-[var(--color-primary)] text-sm transition-colors">Terms of Service</a>
+              <a href="/feed.xml" class="text-gray-500 hover:text-[var(--color-primary)] text-sm transition-colors">RSS Feed</a>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h3 class="font-semibold text-gray-300 mb-3">Newsletter</h3>
+            <p class="text-gray-500 text-sm mb-3">Weekly AI insights in your inbox.</p>
+            <form id="newsletter-form-footer" class="flex flex-col gap-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                class="px-3 py-2 rounded-lg text-sm bg-white/5 border border-white/10 text-gray-300 placeholder-gray-600 focus:outline-none focus:border-[var(--color-primary)]/50"
+              />
+              <button type="submit" class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-secondary)] text-sm font-semibold rounded-lg hover:bg-[var(--color-primary)]/90 transition-colors">
+                Subscribe
+              </button>
+            </form>
+            <!-- Social Links -->
+            <div class="flex gap-3 mt-4">
+              <a href="https://twitter.com/egoistai" target="_blank" rel="noopener" class="text-gray-500 hover:text-[var(--color-primary)] transition-colors" aria-label="Twitter">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://github.com/egoistai" target="_blank" rel="noopener" class="text-gray-500 hover:text-[var(--color-primary)] transition-colors" aria-label="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="/feed.xml" class="text-gray-500 hover:text-[var(--color-primary)] transition-colors" aria-label="RSS Feed">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-white/5 mt-8 pt-8 text-center text-gray-600 text-sm">
+          &copy; {new Date().getFullYear()} EgoistAI. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+    </script>
+
+    <!-- Newsletter Form Handler -->
+    <script>
+      document.querySelectorAll('form[id^="newsletter-form"]').forEach(form => {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const emailInput = (form as HTMLFormElement).querySelector('input[name="email"]') as HTMLInputElement;
+          const submitBtn = (form as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+          const email = emailInput?.value;
+          if (!email) return;
+
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Subscribing...';
+          submitBtn.disabled = true;
+
+          try {
+            const res = await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email })
+            });
+
+            if (res.ok) {
+              emailInput.value = '';
+              submitBtn.textContent = 'Subscribed!';
+              submitBtn.style.opacity = '0.8';
+              setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '';
+                submitBtn.disabled = false;
+              }, 3000);
+            } else {
+              throw new Error('Failed');
+            }
+          } catch {
+            // Fallback: store in localStorage
+            const subs = JSON.parse(localStorage.getItem('egoistai_subs') || '[]');
+            if (!subs.includes(email)) subs.push(email);
+            localStorage.setItem('egoistai_subs', JSON.stringify(subs));
+
+            emailInput.value = '';
+            submitBtn.textContent = 'Subscribed!';
+            setTimeout(() => {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            }, 3000);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

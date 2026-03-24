@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Brain/circuit icon representing AI -->
+  <rect width="128" height="128" rx="24" fill="#0A0A1A"/>
+  <!-- Stylized "E" made of circuit-like paths -->
+  <path d="M36 32h56v12H52v16h32v12H52v16h40v12H36V32z" fill="#00FF88"/>
+  <!-- Circuit dots -->
+  <circle cx="96" cy="38" r="4" fill="#6366F1"/>
+  <circle cx="84" cy="56" r="4" fill="#6366F1"/>
+  <circle cx="96" cy="94" r="4" fill="#6366F1"/>
+  <!-- AI indicator dot -->
+  <circle cx="104" cy="24" r="6" fill="#00FF88" opacity="0.6"/>
+</svg>

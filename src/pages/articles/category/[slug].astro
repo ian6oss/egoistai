@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import CategoryFilter from '../../../components/CategoryFilter.astro';
+import { getCollection } from 'astro:content';
+
+const categoriesData = [
+  { slug: "tools", name: "Tools", description: "Reviews and comparisons of the best AI tools for builders and creators." },
+  { slug: "news", name: "News", description: "The latest developments in artificial intelligence and machine learning." },
+  { slug: "tutorials", name: "Tutorials", description: "Step-by-step guides to master AI tools and workflows." },
+  { slug: "money", name: "Money", description: "How to monetize AI, earn with AI tools, and build AI-powered businesses." },
+  { slug: "people", name: "People", description: "Profiles of the founders, researchers, and builders shaping the AI industry." },
+];
+
+export async function getStaticPaths() {
+  const cats = [
+    { slug: "tools", name: "Tools", description: "Reviews and comparisons of the best AI tools for builders and creators." },
+    { slug: "news", name: "News", description: "The latest developments in artificial intelligence and machine learning." },
+    { slug: "tutorials", name: "Tutorials", description: "Step-by-step guides to master AI tools and workflows." },
+    { slug: "money", name: "Money", description: "How to monetize AI, earn with AI tools, and build AI-powered businesses." },
+    { slug: "people", name: "People", description: "Profiles of the founders, researchers, and builders shaping the AI industry." },
+  ];
+  return cats.map(cat => ({
+    params: { slug: cat.slug },
+    props: { categoryName: cat.name, categoryDescription: cat.description },
+  }));
+}
+
+const { slug } = Astro.params;
+const { categoryName, categoryDescription } = Astro.props;
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter(a => a.data.categorySlug === slug)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout
+  title={`${categoryName} — EgoistAI`}
+  description={categoryDescription}
+>
+  <!-- Category Header -->
+  <section class="gradient-hero py-12 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-black text-white mb-3">{categoryName}</h1>
+      <p class="text-gray-400 max-w-2xl">{categoryDescription}</p>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Category Filter -->
+      <div class="mb-8">
+        <CategoryFilter active={slug} />
+      </div>
+
+      {articles.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles.map(article => (
+            <ArticleCard
+              title={article.data.title}
+              slug={article.id}
+              excerpt={article.data.excerpt}
+              category={article.data.category}
+              categorySlug={article.data.categorySlug}
+              image={article.data.image}
+              date={article.data.date}
+              readTime={article.data.readTime}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <div class="text-6xl mb-4">&#x1f50d;</div>
+          <h3 class="text-xl font-bold text-white mb-2">No articles yet</h3>
+          <p class="text-gray-400 mb-6">We're working on {categoryName.toLowerCase()} content. Subscribe to get notified.</p>
+          <a href="/" class="inline-block px-6 py-3 bg-[var(--color-primary)] text-[var(--color-secondary)] font-bold rounded-lg hover:bg-[var(--color-primary)]/90 transition-colors">
+            Browse All Articles
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  active?: string;
+}
+
+const { active } = Astro.props;
+
+const categories = [
+  { name: "All", slug: "" },
+  { name: "Tools", slug: "tools" },
+  { name: "News", slug: "news" },
+  { name: "Tutorials", slug: "tutorials" },
+  { name: "Money", slug: "money" },
+  { name: "People", slug: "people" },
+];
+---
+
+<div class="flex flex-wrap gap-2">
+  {categories.map(cat => {
+    const isActive = active === cat.slug || (!active && cat.slug === "");
+    const href = cat.slug ? `/articles/category/${cat.slug}` : "/";
+    return (
+      <a
+        href={href}
+        class:list={[
+          "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border",
+          isActive
+            ? "bg-[var(--color-primary)] text-[var(--color-secondary)] border-[var(--color-primary)]"
+            : "bg-white/5 text-gray-400 border-white/10 hover:border-[var(--color-primary)]/50 hover:text-[var(--color-primary)]"
+        ]}
+      >
+        {cat.name}
+      </a>
+    );
+  })}
+</div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://egoistai.com/sitemap-index.xml
