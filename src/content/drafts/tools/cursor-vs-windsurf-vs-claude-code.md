@@ -50,6 +50,8 @@ Let's get the money conversation out of the way.
 
 **The pricing verdict:** If budget matters, Windsurf's free tier is hard to beat. Cursor at $20/month is the value sweet spot. Claude Code at $100-200/month is a premium play — you're betting that the raw power of unrestricted Claude access will pay for itself in productivity. For many professional developers, it does. But it's not an impulse purchase.
 
+**Pro tip:** If you want to test premium AI tools without committing to full-price subscriptions, [GamsGo](https://www.gamsgo.com/partner/uZJ7x) offers shared plans for ChatGPT, Claude, and other AI services at significantly reduced rates.
+
 ## Code Generation Quality
 
 This is the big one. All three tools lean on frontier models, but the experience of using them varies enormously.

@@ -59,6 +59,8 @@ Let's start with the part everyone cares about but nobody wants to talk about: w
 | API access | Yes | Yes | Yes | Yes | Yes |
 | Commercial license | Yes (paid) | Yes (paid) | Yes (paid) | Yes (paid) | Yes (paid) |
 
+Not ready to pay full price for multiple tools? [GamsGo](https://www.gamsgo.com/partner/uZJ7x) offers shared subscriptions to AI platforms like ChatGPT (which includes Sora access) at significantly lower prices — handy when you're still figuring out which tool deserves your money.
+
 A few things jump out immediately. Sora's pricing is misleading because it's bundled with ChatGPT — you're not paying $20 for a video generator, you're paying $20 for everything OpenAI offers, and video is one feature. Sounds like a deal until you hit the generation limits, which are tight. Kling offers the most raw output per dollar, and its two-minute clip capability is genuinely unique. Runway charges a premium, but the Gen-4 4K output justifies it for professional work.
 
 ## Sora: The Famous One

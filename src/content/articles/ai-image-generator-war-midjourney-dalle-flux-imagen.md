@@ -50,6 +50,8 @@ Now let's dig into the details.
 
 The pricing story is interesting. DALL-E is technically the most expensive because it's bundled with ChatGPT — you're paying for the full AI assistant, not just image generation. FLUX offers the best value because the base model is open source and can be run locally for free. Midjourney's per-image cost is the lowest among paid services.
 
+Not ready to commit to full price? [GamsGo](https://www.gamsgo.com/partner/uZJ7x) offers discounted access to most of these AI tools through shared plans.
+
 ## Midjourney v7: The Reigning Champion
 
 Midjourney has held the aesthetic crown for over two years and v7 doesn't let go. It produces the most visually stunning images across virtually every style.

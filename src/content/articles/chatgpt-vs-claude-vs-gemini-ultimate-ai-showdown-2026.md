@@ -48,6 +48,8 @@ The free tiers are surprisingly capable across all three. If you're a casual use
 
 **Best value for teams:** Gemini wins here if your organization already uses Google Workspace. The integration alone saves hours per week.
 
+**Pro tip:** If those subscription costs sting, platforms like [GamsGo](https://www.gamsgo.com/partner/uZJ7x) offer shared AI subscriptions at significantly lower prices — worth checking out if you're experimenting with multiple tools.
+
 ![AI pricing comparison chart](/images/ai-pricing-comparison-2026.webp)
 
 ## Writing Quality: The Test That Matters Most

@@ -319,7 +319,7 @@ Here's our honest take, without the diplomatic both-sides hedging:
 
 **If you're a senior dev tackling complex problems, add Claude Code.** Not instead of Cursor — in addition to it. Use Cursor for your regular coding flow and Claude Code (on Max) for the heavy lifting: large refactors, debugging complex issues, understanding unfamiliar codebases. The $100-200/month Max plans are expensive, but if you bill for your time, it pays for itself in a day.
 
-**If you're budget-conscious, start with Windsurf's free tier or Copilot Free.** Both give you real AI assistance at zero cost. Windsurf's free tier is more generous, but Copilot works in more editors.
+**If you're budget-conscious, start with Windsurf's free tier or Copilot Free.** Both give you real AI assistance at zero cost. Windsurf's free tier is more generous, but Copilot works in more editors. And if you want premium model access without the full sticker price, [GamsGo](https://www.gamsgo.com/partner/uZJ7x) offers shared subscriptions to tools like Claude and ChatGPT at steep discounts.
 
 **If you want open-source and control, use Cline or Aider.** Cline if you want a VS Code extension with agentic capabilities. Aider if you prefer the terminal and want beautiful git integration.
 
