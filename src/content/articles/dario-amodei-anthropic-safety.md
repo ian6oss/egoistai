@@ -4,7 +4,7 @@ excerpt: "From OpenAI VP to Anthropic CEO, Dario Amodei bet his career on the id
 category: "People"
 categorySlug: "people"
 image: "/images/dario-amodei-anthropic-safety.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false

@@ -4,7 +4,7 @@ excerpt: "He co-founded OpenAI, helped fire Sam Altman, then walked away from it
 category: "People"
 categorySlug: "people"
 image: "/images/ilya-sutskever-ssi.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false
