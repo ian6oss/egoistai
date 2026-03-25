@@ -304,19 +304,19 @@ function renderPixelLogo() {
     }, 300 + ci * 150);
   }
 
-  // Add blinking block cursor — same size as pixel blocks, right after last letter on bottom row
+  // Add blinking block cursor — one row above bottom, 3 blocks wide
   setTimeout(() => {
-    const lastRow = rows[rows.length - 1];
-    if (lastRow) {
-      // Gap
+    const targetRow = rows[rows.length - 2]; // one row up from bottom
+    if (targetRow) {
       const gap = document.createElement('div');
       gap.className = 'px empty';
-      lastRow.appendChild(gap);
-      // Cursor block — same .px class as pixel blocks
-      const cursor = document.createElement('div');
-      cursor.className = 'px';
-      cursor.style.animation = 'cursor-blink 1s step-end infinite';
-      lastRow.appendChild(cursor);
+      targetRow.appendChild(gap);
+      for (let i = 0; i < 3; i++) {
+        const cursor = document.createElement('div');
+        cursor.className = 'px';
+        cursor.style.animation = 'cursor-blink 1s step-end infinite';
+        targetRow.appendChild(cursor);
+      }
     }
   }, 300 + word.length * 150 + 200);
 }
