@@ -4,7 +4,7 @@ excerpt: "Most AI SaaS products die before they make a dollar. Here's a brutally
 category: "Money"
 categorySlug: "money"
 image: "/images/build-ai-saas-product.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

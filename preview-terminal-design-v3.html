@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EgoistAI — Terminal Design v3</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #12121f;
+    --bg-card: #1a1a2e;
+    --bg-card-hover: #1e1e36;
+    --navy-mid: #252540;
+    --border: rgba(80, 72, 92, 0.6);
+    --border-hover: rgba(80, 72, 92, 0.9);
+    --gold: #da7756;
+    --gold-light: #e8845c;
+    --gold-glow: rgba(218, 119, 86, 0.15);
+    --blue: #4dc9f6;
+    --purple: #b48ead;
+    --yellow: #ebcb8b;
+    --pink: #e06c8a;
+    --red: #ff5f56;
+    --orange: #ffbd2e;
+    --green-dot: #27c93f;
+    --cream: #e8e6e3;
+    --text-secondary: #a89b8c;
+    --text-muted: #5a5468;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg-dark); color: var(--cream); font-family: var(--sans); min-height: 100vh; }
+
+  /* Scanline */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(218,119,86,0.012) 2px, rgba(218,119,86,0.012) 4px);
+  }
+  /* Grid bg */
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(218,119,86,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(218,119,86,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(18,18,31,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; height: 52px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo-symbol { color: var(--gold); font-family: var(--mono); font-weight: 700; font-size: 14px; }
+  .logo-text { color: var(--cream); font-family: var(--mono); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; transition: color 0.2s; }
+  .logo:hover .logo-text { color: var(--gold); }
+  .cursor-blink { color: var(--gold); animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .nav-links { display: flex; gap: 2px; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-family: var(--mono); font-size: 12px; padding: 6px 12px; border-radius: 4px; transition: all 0.2s; }
+  .nav-links a:hover { color: var(--cream); background: rgba(218,119,86,0.08); }
+  .nav-links .p { color: var(--text-muted); margin-right: 2px; }
+
+  .nav-sub { font-family: var(--mono); font-size: 11px; color: var(--bg-dark); background: var(--gold); border: none; padding: 5px 14px; border-radius: 3px; cursor: pointer; font-weight: 600; }
+  .nav-sub:hover { box-shadow: 0 0 24px var(--gold-glow); }
+
+  /* HERO */
+  .hero { position: relative; padding: 60px 24px 40px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; text-left; }
+  .hero-terminal { font-family: var(--mono); font-size: 13px; margin-bottom: 20px; }
+  .hero-terminal .l1 { color: var(--gold); opacity: 0.7; margin-bottom: 4px; }
+  .hero-terminal .l2 { color: var(--text-muted); }
+
+  /* Pixel blocks */
+  .pixel-logo { margin-bottom: 28px; }
+  .pixel-row { display: flex; gap: 2px; margin-bottom: 2px; }
+  .px {
+    width: 6px; height: 6px;
+    border-radius: 2px;
+    background: linear-gradient(145deg, #f5b080 0%, #e0885a 25%, #da7756 50%, #b85a3a 80%, #8a3d22 100%);
+    border: 1px solid rgba(100,40,15,0.7);
+    border-top: 1px solid rgba(245,180,130,0.7);
+    border-left: 1px solid rgba(230,150,100,0.5);
+    border-right: 1px solid rgba(80,30,10,0.6);
+    border-bottom: 1px solid rgba(60,20,5,0.8);
+    box-shadow: inset 0 1px 0 rgba(255,230,200,0.4), inset 0 -2px 0 rgba(0,0,0,0.45), 0 2px 4px rgba(0,0,0,0.4), 0 0 8px rgba(218,119,86,0.2);
+  }
+  .px.empty { background: none; border: none; box-shadow: none; }
+
+  @media (min-width: 640px) { .px { width: 10px; height: 10px; } }
+  @media (min-width: 768px) { .px { width: 14px; height: 14px; border-width: 2px; } }
+  @media (min-width: 1024px) { .px { width: 18px; height: 18px; border-width: 2px; } }
+
+  .hero-tagline { font-family: var(--mono); font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+  .hero-sub { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
+
+  /* CATEGORIES */
+  .cats { max-width: 1200px; margin: 0 auto; padding: 0 24px 24px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .cat-t { font-family: var(--mono); font-size: 11px; padding: 4px 12px; border-radius: 3px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; }
+  .cat-t:hover { border-color: var(--gold); color: var(--gold); }
+  .cat-t.on { border-color: var(--gold); color: var(--gold); background: rgba(218,119,86,0.06); }
+
+  /* FEATURED CAROUSEL */
+  .carousel-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px 28px; }
+  .carousel { position: relative; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-card); }
+  .carousel-track { display: flex; transition: transform 0.6s ease; }
+  .carousel-slide { min-width: 100%; display: grid; grid-template-columns: 1.2fr 1fr; }
+  .carousel-slide .card-img-wrap { position: relative; overflow: hidden; border-right: 1px solid var(--border); }
+  .carousel-slide .card-img { height: 100%; min-height: 240px; max-height: 280px; width: 100%; object-fit: cover; filter: brightness(0.8) contrast(1.1) saturate(0.9); }
+  .carousel-slide .card-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(transparent, rgba(18,18,31,0.9)); }
+  .carousel-slide .slide-body { padding: 24px; display: flex; flex-direction: column; justify-content: center; }
+  .carousel-slide .card-title { font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 10px; }
+  .carousel-slide .card-ex { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; padding: 12px 0; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border); }
+  .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); border: none; cursor: pointer; transition: all 0.3s; }
+  .carousel-dot.active { background: var(--gold); box-shadow: 0 0 8px rgba(218,119,86,0.5); }
+
+  /* GRID */
+  .grid { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 16px; }
+
+  /* CARD - terminal style, no images */
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+  .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(218,119,86,0.06); }
+  .tbar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-bottom: 1px solid var(--border); }
+  .d { width: 9px; height: 9px; border-radius: 50%; }
+  .dr { background: var(--red); } .dy { background: var(--orange); } .dg { background: var(--green-dot); }
+  .tbar-t { font-family: var(--mono); font-size: 10px; color: var(--text-muted); margin-left: 6px; flex: 1; text-align: center; }
+  .card-body { padding: 16px; }
+  .cc { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 8px; display: inline-block; padding: 2px 8px; border-radius: 2px; }
+  .ct { color: var(--gold); background: rgba(218,119,86,0.1); }
+  .cn { color: var(--blue); background: rgba(77,201,246,0.1); }
+  .cu { color: var(--purple); background: rgba(180,142,173,0.1); }
+  .cm { color: var(--yellow); background: rgba(235,203,139,0.1); }
+  .cp { color: var(--pink); background: rgba(224,108,138,0.1); }
+  .card-title { font-size: 15px; font-weight: 600; line-height: 1.45; margin-bottom: 8px; }
+  .card-ex { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-m { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 10px; color: var(--text-muted); padding-top: 10px; border-top: 1px solid var(--border); }
+  .card-m .dt::before { content: '$ '; color: var(--gold); }
+
+  /* Glow pulse on carousel */
+  @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 20px rgba(218,119,86,0.05); } 50% { box-shadow: 0 0 40px rgba(218,119,86,0.1); } }
+  .carousel { animation: glow-pulse 4s ease-in-out infinite; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  footer p { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+  footer .g { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .grid { grid-template-columns: 1fr; }
+    .carousel-slide { grid-template-columns: 1fr; }
+    .carousel-slide .card-img-wrap { border-right: none; border-bottom: 1px solid var(--border); }
+    .carousel-slide .card-img { min-height: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-symbol">$</span>
+      <span class="logo-text">EgoistAI</span>
+      <span class="cursor-blink">_</span>
+    </a>
+    <div class="nav-links">
+      <a href="#"><span class="p">&gt;</span>tools</a>
+      <a href="#"><span class="p">&gt;</span>news</a>
+      <a href="#"><span class="p">&gt;</span>tutorials</a>
+      <a href="#"><span class="p">&gt;</span>money</a>
+      <a href="#"><span class="p">&gt;</span>people</a>
+    </div>
+    <button class="nav-sub">[Subscribe]</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-terminal">
+      <div class="l1">&gt; Initializing EgoistAI node...</div>
+      <div class="l2">[OK] Connection established. Welcome to the feed.</div>
+    </div>
+    <div class="pixel-logo" id="pixelLogo"></div>
+    <div class="hero-tagline">AI tools, news & insights for builders who ship.</div>
+    <div class="hero-sub">No fluff. No hype. Just signal.</div>
+  </div>
+</section>
+
+<div class="cats">
+  <button class="cat-t on">all</button>
+  <button class="cat-t">tools</button>
+  <button class="cat-t">news</button>
+  <button class="cat-t">tutorials</button>
+  <button class="cat-t">money</button>
+  <button class="cat-t">people</button>
+</div>
+
+<!-- FEATURED CAROUSEL -->
+<div class="carousel-wrap">
+  <div class="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
+        <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80" alt="Code"><div class="card-img-overlay"></div></div>
+        <div><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">cursor-vs-windsurf-vs-claude-code.md</span></div>
+        <div class="slide-body"><span class="cc ct">TOOLS</span><h3 class="card-title">Cursor vs Windsurf vs Claude Code: Which AI IDE Wins?</h3><p class="card-ex">We put the three biggest AI coding environments head-to-head. Speed, context understanding, multi-file editing, and the one thing nobody talks about.</p><div class="card-m"><span class="dt">2026-03-24</span><span>12 min read</span></div></div></div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI"><div class="card-img-overlay"></div></div>
+        <div><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">gemini-2.5-pro-review.md</span></div>
+        <div class="slide-body"><span class="cc cn">NEWS</span><h3 class="card-title">Google Gemini 2.5 Pro: First Look at the New King of Benchmarks</h3><p class="card-ex">Gemini 2.5 Pro tops every benchmark. But does that translate to real-world performance? We tested it against Claude and GPT.</p><div class="card-m"><span class="dt">2026-03-24</span><span>10 min read</span></div></div></div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80" alt="Robot"><div class="card-img-overlay"></div></div>
+        <div><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">ai-agents-replacing-saas.md</span></div>
+        <div class="slide-body"><span class="cc cn">NEWS</span><h3 class="card-title">AI Agents Are Replacing SaaS — Here's What's Next</h3><p class="card-ex">The $200B SaaS industry is about to get disrupted by AI agents. MCP, Operator, and what's coming.</p><div class="card-m"><span class="dt">2026-03-24</span><span>9 min read</span></div></div></div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Network"><div class="card-img-overlay"></div></div>
+        <div><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">mcp-servers-tutorial.md</span></div>
+        <div class="slide-body"><span class="cc cu">TUTORIALS</span><h3 class="card-title">MCP Servers Tutorial: Connect AI to Everything</h3><p class="card-ex">Model Context Protocol is how Claude talks to the real world. File systems, databases, APIs — set it up from scratch.</p><div class="card-m"><span class="dt">2026-03-24</span><span>12 min read</span></div></div></div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Portrait"><div class="card-img-overlay"></div></div>
+        <div><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">dario-amodei.md</span></div>
+        <div class="slide-body"><span class="cc cp">PEOPLE</span><h3 class="card-title">Dario Amodei: The AI Safety Crusader Building Claude</h3><p class="card-ex">He left OpenAI to build something safer. Now Anthropic is valued at $60B+ and Claude is the developer's choice.</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <button class="carousel-dot active" data-idx="0"></button>
+      <button class="carousel-dot" data-idx="1"></button>
+      <button class="carousel-dot" data-idx="2"></button>
+      <button class="carousel-dot" data-idx="3"></button>
+      <button class="carousel-dot" data-idx="4"></button>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">rag-tutorial.md</span></div><div class="card-body"><span class="cc cu">TUTORIALS</span><h3 class="card-title">RAG Tutorial: Build Your Own AI Knowledge Base</h3><p class="card-ex">Document chunking, embeddings, vector storage, and retrieval — complete Python guide from scratch.</p><div class="card-m"><span class="dt">2026-03-24</span><span>14 min read</span></div></div></div>
+
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">best-ai-coding-assistants.md</span></div><div class="card-body"><span class="cc ct">TOOLS</span><h3 class="card-title">Best AI Coding Assistants in 2026: Complete Ranking</h3><p class="card-ex">Copilot, Cursor, Claude Code, Windsurf, Cline, Aider — we ranked them all with real-world testing.</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
+
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">ai-seo-strategy.md</span></div><div class="card-body"><span class="cc cu">TUTORIALS</span><h3 class="card-title">AI-Powered SEO Strategy: Rank Higher with Less Effort</h3><p class="card-ex">How to use AI for keyword research, content optimization, and programmatic SEO that actually ranks.</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
+
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">best-local-llms.md</span></div><div class="card-body"><span class="cc ct">TOOLS</span><h3 class="card-title">Best Local LLMs in 2026: Run AI Without the Cloud</h3><p class="card-ex">Llama, Mistral, Phi, Qwen, Gemma — which open-source models are worth running locally?</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
+
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">jensen-huang.md</span></div><div class="card-body"><span class="cc cp">PEOPLE</span><h3 class="card-title">Jensen Huang: The Man Behind NVIDIA's AI Empire</h3><p class="card-ex">From Denny's booth to $3 trillion market cap. How Jensen bet everything on AI before anyone else.</p><div class="card-m"><span class="dt">2026-03-24</span><span>12 min read</span></div></div></div>
+
+  <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">ai-voice-cloning.md</span></div><div class="card-body"><span class="cc ct">TOOLS</span><h3 class="card-title">AI Voice Cloning Tools: ElevenLabs vs PlayHT vs LOVO</h3><p class="card-ex">We compared voice quality, pricing, languages, and API access across the top AI voice platforms.</p><div class="card-m"><span class="dt">2026-03-24</span><span>10 min read</span></div></div></div>
+</div>
+
+<footer>
+  <p><span class="g">&gt;</span> &copy; 2026 EgoistAI <span class="g">|</span> Built for builders <span class="g">|</span> No fluff allowed <span class="cursor-blink">_</span></p>
+</footer>
+
+<script>
+// Pixel font map for "EgoistAI" - each letter is a 5x7 grid (1=block, 0=empty)
+const LETTERS = {
+  'E': [
+    [1,1,1,1,1],
+    [1,0,0,0,0],
+    [1,0,0,0,0],
+    [1,1,1,1,0],
+    [1,0,0,0,0],
+    [1,0,0,0,0],
+    [1,1,1,1,1]
+  ],
+  'g': [
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,1,1,1,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [0,1,1,1,1],
+    [0,0,0,0,1],
+    [1,1,1,1,0]
+  ],
+  'o': [
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,1,1,1,0],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [0,1,1,1,0]
+  ],
+  'i': [
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0]
+  ],
+  's': [
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,1,1,1,1],
+    [1,0,0,0,0],
+    [0,1,1,1,0],
+    [0,0,0,0,1],
+    [1,1,1,1,0]
+  ],
+  't': [
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,1,1,1,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,0,1,0]
+  ],
+  'A': [
+    [0,1,1,1,0],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [1,1,1,1,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1]
+  ],
+  'I': [
+    [1,1,1,1,1],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [1,1,1,1,1]
+  ]
+};
+
+function renderPixelLogo() {
+  const container = document.getElementById('pixelLogo');
+  const word = 'EgoistAI';
+  const maxRows = 8;
+
+  for (let row = 0; row < maxRows; row++) {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'pixel-row';
+
+    for (let ci = 0; ci < word.length; ci++) {
+      const letter = LETTERS[word[ci]];
+      if (!letter) continue;
+      const letterRow = letter[row] || [0,0,0,0,0];
+
+      for (let col = 0; col < letterRow.length; col++) {
+        const px = document.createElement('div');
+        px.className = letterRow[col] ? 'px' : 'px empty';
+        rowDiv.appendChild(px);
+      }
+
+      // Add gap between letters
+      if (ci < word.length - 1) {
+        const gap = document.createElement('div');
+        gap.className = 'px empty';
+        rowDiv.appendChild(gap);
+      }
+    }
+
+    container.appendChild(rowDiv);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderPixelLogo();
+
+  // Stagger cards
+  document.querySelectorAll('.card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 150 + i * 80);
+  });
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let cur = 0;
+  function goTo(i) { cur = i; track.style.transform = `translateX(-${cur*100}%)`; dots.forEach((d,j) => d.classList.toggle('active', j===cur)); }
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+  setInterval(() => goTo((cur+1) % dots.length), 5000);
+});
+</script>
+</body>
+</html>

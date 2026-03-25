@@ -4,7 +4,7 @@ excerpt: "Forget the $100K/month screenshots. Here are 10 real ways to make mone
 category: "Money"
 categorySlug: "money"
 image: "/images/monetize-ai-skills.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

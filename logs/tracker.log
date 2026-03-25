@@ -1,0 +1,268 @@
+2026-03-25 11:04:04,727 [INFO] ============================================================
+2026-03-25 11:04:04,727 [INFO] AI News Tracker starting
+2026-03-25 11:04:04,727 [INFO] ============================================================
+2026-03-25 11:04:04,728 [INFO] Checking Anthropic...
+2026-03-25 11:04:14,074 [INFO] No posts found for Anthropic
+2026-03-25 11:04:14,076 [INFO] Checking OpenAI...
+2026-03-25 11:04:15,165 [INFO] RSS success for OpenAI (https://openai.com/blog/rss.xml): 15 posts
+2026-03-25 11:04:15,165 [INFO] Found 15 new post(s) from OpenAI
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Helping developers build safer AI experiences for teens
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Update on the OpenAI Foundation
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Powering product discovery in ChatGPT
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Creating with Sora Safely
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: How we monitor internal coding agents for misalignment
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: OpenAI to acquire Astral
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Introducing GPT-5.4 mini and nano
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Equipping workers with insights about compensation
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Why Codex Security Doesn’t Include a SAST Report
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Rakuten fixes issues twice as fast with Codex
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Designing AI agents to resist prompt injection
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Wayfair boosts catalog accuracy and support speed with OpenAI
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: From model to agent: Equipping the Responses API with a computer environment
+2026-03-25 11:04:15,165 [INFO]   [DRY RUN] Would process: Improving instruction hierarchy in frontier LLMs
+2026-03-25 11:04:15,165 [INFO] Checking Google AI...
+2026-03-25 11:04:15,775 [INFO] RSS success for Google AI (https://blog.google/technology/ai/rss/): 15 posts
+2026-03-25 11:04:15,775 [INFO] Found 15 new post(s) from Google AI
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Bringing the power of Personal Intelligence to more people
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Our latest investment in open source security for the AI era
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: How AI is helping improve heart health in rural Australia
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Gemini in Google Sheets just achieved state-of-the-art performance.
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: How our open-source AI model SpeciesNet is helping to promote wildlife conservation
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Ask a Techspert: How does AI understand my visual searches?
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: The latest AI news we announced in February
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Use Canvas in AI Mode to get things done and bring your ideas to life, right in Search.
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Create new worlds in Project Genie with these 4 tips
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Gemini 3.1 Flash-Lite: Built for intelligence at scale
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Google and the Massachusetts AI Hub are launching a new AI training initiative for the Commonwealth.
+2026-03-25 11:04:15,775 [INFO]   [DRY RUN] Would process: Get more context and understand translations more deeply with new AI-powered updates in Translate.
+2026-03-25 11:04:15,776 [INFO]   [DRY RUN] Would process: Nano Banana 2: Combining Pro capabilities with lightning-fast speed
+2026-03-25 11:04:15,776 [INFO]   [DRY RUN] Would process: Build with Nano Banana 2, our best image generation and editing model
+2026-03-25 11:04:15,776 [INFO]   [DRY RUN] Would process: See the whole picture and find the look with Circle to Search
+2026-03-25 11:04:15,776 [INFO] Checking Meta AI...
+2026-03-25 11:04:16,484 [WARNING] Failed to scrape https://ai.meta.com/blog/: 400 Client Error: Bad Request for url: https://ai.meta.com/blog/
+2026-03-25 11:04:16,485 [INFO] No posts found for Meta AI
+2026-03-25 11:04:16,485 [INFO] Checking Perplexity...
+2026-03-25 11:04:16,890 [INFO] Scraped Perplexity: 1 links found
+2026-03-25 11:04:16,890 [INFO] Found 1 new post(s) from Perplexity
+2026-03-25 11:04:16,891 [INFO]   [DRY RUN] Would process: Careers
+2026-03-25 11:04:16,891 [INFO] Checking Midjourney...
+2026-03-25 11:04:17,417 [WARNING] Failed to scrape https://docs.midjourney.com/changelog: 404 Client Error: Not Found for url: https://docs.midjourney.com/changelog
+2026-03-25 11:04:17,418 [INFO] No posts found for Midjourney
+2026-03-25 11:04:17,419 [INFO] Checking Runway...
+2026-03-25 11:04:17,838 [INFO] No posts found for Runway
+2026-03-25 11:04:17,839 [INFO] Checking DeepSeek...
+2026-03-25 11:04:18,386 [WARNING] Failed to scrape https://api-docs.deepseek.com/news: 404 Client Error: Not Found for url: https://api-docs.deepseek.com/news
+2026-03-25 11:04:18,387 [INFO] No posts found for DeepSeek
+2026-03-25 11:04:18,388 [INFO] Checking Qwen (Alibaba)...
+2026-03-25 11:04:19,250 [INFO] Scraped Qwen (Alibaba): 7 links found
+2026-03-25 11:04:19,662 [INFO] Found 7 new post(s) from Qwen (Alibaba)
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: 简体中文
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: Qwen3Guard: Real-time Safety for Your Token Stream
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: Qwen-Image: Crafting with Native Text Rendering
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: GSPO: Towards Scalable Reinforcement Learning for Language Models
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: Qwen-MT: Where Speed Meets Smart Translation
+2026-03-25 11:04:19,663 [INFO]   [DRY RUN] Would process: Next  »
+2026-03-25 11:04:19,665 [INFO] Checking Moonshot AI / Kimi...
+2026-03-25 11:04:21,423 [INFO] No posts found for Moonshot AI / Kimi
+2026-03-25 11:04:21,424 [INFO] Checking ElevenLabs...
+2026-03-25 11:04:23,240 [INFO] Scraped ElevenLabs: 28 links found
+2026-03-25 11:04:23,241 [INFO] Found 28 new post(s) from ElevenLabs
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: ElevenLabs and Deloitte partner to transform customer experienceStrategic partnership combines ElevenLabs’ Agents platform with Deloitte’s industry expertise to help enterprises deploy omnichannel agents
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Affiliates
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Company
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Developer
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Impact
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Product
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Research
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Introducing ElevenLabs for Government
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Honoring Eric Dane’s Legacy at SXSW: Advancing 1 Million Voices
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: ElevenLabs raises $500M Series D at $11B valuation
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Klarna reduces Time to Resolution by 10X with ElevenAgents
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Eleven v3 is Now Generally Available
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Revolut selects ElevenLabs Agents to bolster customer support
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Deutsche Telekom and ElevenLabs announce partnership
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: We are on the grid
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Introducing Scribe v2
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Introducing The Eleven Album
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: MasterClass brings AI instructors to life with ElevenLabs
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: We’re partnering with Liberty Global to accelerate voice AI expansion across Europe
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Introducing ElevenLabs Image & Video
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Bookwire and ElevenLabs partner to bring ebooks to audio
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Toyota engages fans with AI-powered Brock Purdy experience
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: TVS Motor Company deploys multimodal AI agents using ElevenLabs
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: ElevenLabs Welcomes Matthew McConaughey as New Investor
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Introducing Scribe v2 Realtime
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Harvey and ElevenLabs Partner to Give Lawyers a Global Voice
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Announcing Partnership with Sir Michael Caine to Newly Launched Iconic Marketplace
+2026-03-25 11:04:23,241 [INFO]   [DRY RUN] Would process: Honoring veterans and their voices: Lt Col Thomas Brittingham’s story
+2026-03-25 11:04:23,242 [INFO] Checking Cursor...
+2026-03-25 11:04:23,440 [INFO] Scraped Cursor: 7 links found
+2026-03-25 11:04:23,440 [INFO] Found 7 new post(s) from Cursor
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Mar 19, 2026
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Mar 11, 2026
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Mar 5, 2026
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Mar 4, 2026
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: 2.6Mar 3, 2026
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Next →Older posts
+2026-03-25 11:04:23,440 [INFO]   [DRY RUN] Would process: Changelog
+2026-03-25 11:04:23,441 [INFO] Checking Black Forest Labs / Flux...
+2026-03-25 11:04:28,203 [INFO] Scraped Black Forest Labs / Flux: 18 links found
+2026-03-25 11:04:28,204 [INFO] Found 18 new post(s) from Black Forest Labs / Flux
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read More
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Trust and Security
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,204 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,205 [INFO]   [DRY RUN] Would process: Read more
+2026-03-25 11:04:28,206 [INFO] ------------------------------------------------------------
+2026-03-25 11:04:28,206 [INFO] Run complete: 91 new posts found, 0 articles generated
+2026-03-25 11:04:28,206 [INFO] Drafts directory: /Users/ian/egoistai/src/content/drafts/news
+2026-03-25 11:04:28,206 [INFO] ============================================================
+2026-03-25 11:05:16,183 [INFO] ============================================================
+2026-03-25 11:05:16,183 [INFO] AI News Tracker starting
+2026-03-25 11:05:16,183 [INFO] ============================================================
+2026-03-25 11:05:16,183 [INFO] Resetting state file
+2026-03-25 11:05:16,184 [INFO] Checking Anthropic...
+2026-03-25 11:05:31,180 [INFO] Scraped Anthropic: 14 links found
+2026-03-25 11:05:31,181 [INFO] Found 14 new post(s) from Anthropic
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: ProductFeb 17, 2026Introducing Claude Sonnet 4.6Sonnet 4.6 delivers frontier performance across coding, agents, and professional work at scale.
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: AnnouncementsFeb 5, 2026Introducing Claude Opus 4.6We’re upgrading our smartest model. Across agentic coding, computer use, tool use, search, and finance, Opus 4.6 is an industry-leading model, often by wide margin.
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: AnnouncementsFeb 4, 2026Claude is a space to thinkWe’ve made a choice: Claude will remain ad-free. We explain why advertising incentives are incompatible with a genuinely helpful AI assistant, and how we plan to expand access without compromising user trust.
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: Mar 12, 2026AnnouncementsAnthropic invests $100 million into the Claude Partner Network
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: Mar 11, 2026AnnouncementsIntroducing The Anthropic Institute
+2026-03-25 11:05:31,181 [INFO]   [DRY RUN] Would process: Mar 10, 2026AnnouncementsSydney will become Anthropic’s fourth office in Asia-Pacific
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Mar 6, 2026PolicyPartnering with Mozilla to improve Firefox’s security
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Mar 5, 2026AnnouncementsWhere things stand with the Department of War
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Feb 27, 2026AnnouncementsStatement on the comments from Secretary of War Pete Hegseth
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Feb 26, 2026AnnouncementsStatement from Dario Amodei on our discussions with the Department of War
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Feb 25, 2026AnnouncementsAnthropic acquires Vercept to advance Claude's computer use capabilities
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Feb 24, 2026PolicyAnthropic’s Responsible Scaling Policy: Version 3.0
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Feb 23, 2026AnnouncementsDetecting and preventing distillation attacks
+2026-03-25 11:05:31,182 [INFO]   [DRY RUN] Would process: Responsible Scaling Policy
+2026-03-25 11:05:31,183 [INFO] Checking OpenAI...
+2026-03-25 11:05:32,326 [INFO] RSS success for OpenAI (https://openai.com/blog/rss.xml): 15 posts
+2026-03-25 11:05:32,326 [INFO] Found 15 new post(s) from OpenAI
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Helping developers build safer AI experiences for teens
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Update on the OpenAI Foundation
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Powering product discovery in ChatGPT
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Creating with Sora Safely
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: How we monitor internal coding agents for misalignment
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: OpenAI to acquire Astral
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Introducing GPT-5.4 mini and nano
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Equipping workers with insights about compensation
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Why Codex Security Doesn’t Include a SAST Report
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Rakuten fixes issues twice as fast with Codex
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Designing AI agents to resist prompt injection
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Wayfair boosts catalog accuracy and support speed with OpenAI
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: From model to agent: Equipping the Responses API with a computer environment
+2026-03-25 11:05:32,326 [INFO]   [DRY RUN] Would process: Improving instruction hierarchy in frontier LLMs
+2026-03-25 11:05:32,327 [INFO] Checking Google AI...
+2026-03-25 11:05:32,896 [INFO] RSS success for Google AI (https://blog.google/technology/ai/rss/): 15 posts
+2026-03-25 11:05:32,896 [INFO] Found 15 new post(s) from Google AI
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Bringing the power of Personal Intelligence to more people
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Our latest investment in open source security for the AI era
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: How AI is helping improve heart health in rural Australia
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Gemini in Google Sheets just achieved state-of-the-art performance.
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: How our open-source AI model SpeciesNet is helping to promote wildlife conservation
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Ask a Techspert: How does AI understand my visual searches?
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: The latest AI news we announced in February
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Use Canvas in AI Mode to get things done and bring your ideas to life, right in Search.
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Create new worlds in Project Genie with these 4 tips
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Gemini 3.1 Flash-Lite: Built for intelligence at scale
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Google and the Massachusetts AI Hub are launching a new AI training initiative for the Commonwealth.
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Get more context and understand translations more deeply with new AI-powered updates in Translate.
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Nano Banana 2: Combining Pro capabilities with lightning-fast speed
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: Build with Nano Banana 2, our best image generation and editing model
+2026-03-25 11:05:32,896 [INFO]   [DRY RUN] Would process: See the whole picture and find the look with Circle to Search
+2026-03-25 11:05:32,897 [INFO] Checking Meta AI...
+2026-03-25 11:05:33,739 [WARNING] Failed to scrape https://ai.meta.com/blog/: 400 Client Error: Bad Request for url: https://ai.meta.com/blog/
+2026-03-25 11:05:33,740 [INFO] No posts found for Meta AI
+2026-03-25 11:05:33,741 [INFO] Checking Perplexity...
+2026-03-25 11:05:33,780 [WARNING] Failed to scrape https://www.perplexity.ai/hub: 403 Client Error: Forbidden for url: https://www.perplexity.ai/hub
+2026-03-25 11:05:33,781 [INFO] No posts found for Perplexity
+2026-03-25 11:05:33,783 [INFO] Checking Midjourney...
+2026-03-25 11:06:03,812 [WARNING] Failed to scrape https://mid-journey.ai/changelog/: HTTPSConnectionPool(host='mid-journey.ai', port=443): Max retries exceeded with url: /changelog/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='mid-journey.ai', port=443) at 0x107c63750>, 'Connection to mid-journey.ai timed out. (connect timeout=30)'))
+2026-03-25 11:06:03,813 [INFO] No posts found for Midjourney
+2026-03-25 11:06:03,814 [INFO] Checking Runway...
+2026-03-25 11:06:04,231 [INFO] No posts found for Runway
+2026-03-25 11:06:04,233 [INFO] Checking DeepSeek...
+2026-03-25 11:06:04,299 [INFO] Scraped DeepSeek: 4 links found
+2026-03-25 11:06:04,676 [INFO] GitHub releases for DeepSeek: 1 found
+2026-03-25 11:06:04,676 [INFO] Found 5 new post(s) from DeepSeek
+2026-03-25 11:06:04,676 [INFO]   [DRY RUN] Would process: DeepSeek Platform
+2026-03-25 11:06:04,676 [INFO]   [DRY RUN] Would process: API Reference
+2026-03-25 11:06:04,676 [INFO]   [DRY RUN] Would process: Other Resources
+2026-03-25 11:06:04,676 [INFO]   [DRY RUN] Would process: API Status Page
+2026-03-25 11:06:04,677 [INFO]   [DRY RUN] Would process: DeepSeek: v1.0.0
+2026-03-25 11:06:04,679 [INFO] Checking Qwen (Alibaba)...
+2026-03-25 11:06:05,052 [INFO] Scraped Qwen (Alibaba): 5 links found
+2026-03-25 11:06:05,343 [INFO] Found 5 new post(s) from Qwen (Alibaba)
+2026-03-25 11:06:05,343 [INFO]   [DRY RUN] Would process: Qwen3Guard: Real-time Safety for Your Token Stream
+2026-03-25 11:06:05,343 [INFO]   [DRY RUN] Would process: Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency
+2026-03-25 11:06:05,343 [INFO]   [DRY RUN] Would process: Qwen-Image: Crafting with Native Text Rendering
+2026-03-25 11:06:05,344 [INFO]   [DRY RUN] Would process: GSPO: Towards Scalable Reinforcement Learning for Language Models
+2026-03-25 11:06:05,344 [INFO]   [DRY RUN] Would process: Qwen-MT: Where Speed Meets Smart Translation
+2026-03-25 11:06:05,345 [INFO] Checking Moonshot AI / Kimi...
+2026-03-25 11:06:06,086 [INFO] Scraped Moonshot AI / Kimi: 6 links found
+2026-03-25 11:06:06,086 [INFO] Found 6 new post(s) from Moonshot AI / Kimi
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: Agent SwarmScale Out, Not Just Up
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: WorldVQAAtomic World Knowledge in MLLMs
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: Kimi K2.5Visual Agentic Intelligence
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: Kimi Vendor VerifierRebuilding the Chain of Trust
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: Kimi K2 ThinkingOpen-source thinking model
+2026-03-25 11:06:06,086 [INFO]   [DRY RUN] Would process: Kimi K2Open Agentic Intelligence
+2026-03-25 11:06:06,087 [INFO] Checking ElevenLabs...
+2026-03-25 11:06:08,218 [INFO] Scraped ElevenLabs: 21 links found
+2026-03-25 11:06:08,219 [INFO] Found 21 new post(s) from ElevenLabs
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: ElevenLabs and Deloitte partner to transform customer experienceStrategic partnership combines ElevenLabs’ Agents platform with Deloitte’s industry expertise to help enterprises deploy omnichannel agents
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Introducing ElevenLabs for Government
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Honoring Eric Dane’s Legacy at SXSW: Advancing 1 Million Voices
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: ElevenLabs raises $500M Series D at $11B valuation
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Klarna reduces Time to Resolution by 10X with ElevenAgents
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Eleven v3 is Now Generally Available
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Revolut selects ElevenLabs Agents to bolster customer support
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Deutsche Telekom and ElevenLabs announce partnership
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: We are on the grid
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Introducing Scribe v2
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Introducing The Eleven Album
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: MasterClass brings AI instructors to life with ElevenLabs
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: We’re partnering with Liberty Global to accelerate voice AI expansion across Europe
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Introducing ElevenLabs Image & Video
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Bookwire and ElevenLabs partner to bring ebooks to audio
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Toyota engages fans with AI-powered Brock Purdy experience
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: ElevenLabs Welcomes Matthew McConaughey as New Investor
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Introducing Scribe v2 Realtime
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Harvey and ElevenLabs Partner to Give Lawyers a Global Voice
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Announcing Partnership with Sir Michael Caine to Newly Launched Iconic Marketplace
+2026-03-25 11:06:08,219 [INFO]   [DRY RUN] Would process: Honoring veterans and their voices: Lt Col Thomas Brittingham’s story
+2026-03-25 11:06:08,219 [INFO] Checking Cursor...
+2026-03-25 11:06:08,391 [INFO] Scraped Cursor: 7 links found
+2026-03-25 11:06:08,391 [INFO] Found 7 new post(s) from Cursor
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Mar 19, 2026
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Mar 11, 2026
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Mar 5, 2026
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Mar 4, 2026
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: 2.6Mar 3, 2026
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Next →Older posts
+2026-03-25 11:06:08,391 [INFO]   [DRY RUN] Would process: Changelog
+2026-03-25 11:06:08,392 [INFO] Checking Black Forest Labs / Flux...
+2026-03-25 11:06:12,483 [INFO] No posts found for Black Forest Labs / Flux
+2026-03-25 11:06:12,484 [INFO] ------------------------------------------------------------
+2026-03-25 11:06:12,484 [INFO] Run complete: 88 new posts found, 0 articles generated
+2026-03-25 11:06:12,484 [INFO] Drafts directory: /Users/ian/egoistai/src/content/drafts/news
+2026-03-25 11:06:12,484 [INFO] ============================================================

@@ -4,7 +4,7 @@ excerpt: "Google's Gemini 2.5 Pro dominates benchmarks across the board. But doe
 category: "News"
 categorySlug: "news"
 image: "/images/google-gemini-2-5-pro-review.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false
