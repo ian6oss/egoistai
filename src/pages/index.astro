@@ -304,14 +304,19 @@ function renderPixelLogo() {
     }, 300 + ci * 150);
   }
 
-  // Add blinking underscore cursor inline next to last pixel row
+  // Add blinking block cursor — same size as pixel blocks, right after last letter on bottom row
   setTimeout(() => {
     const lastRow = rows[rows.length - 1];
     if (lastRow) {
-      const cursorEl = document.createElement('span');
-      cursorEl.textContent = '_';
-      cursorEl.style.cssText = 'font-family: "JetBrains Mono", monospace; font-size: 1.5em; font-weight: 900; color: #da7756; animation: cursor-blink 1s step-end infinite; margin-left: 6px; display: inline-flex; align-items: flex-end;';
-      lastRow.appendChild(cursorEl);
+      // Gap
+      const gap = document.createElement('div');
+      gap.className = 'px empty';
+      lastRow.appendChild(gap);
+      // Cursor block — same .px class as pixel blocks
+      const cursor = document.createElement('div');
+      cursor.className = 'px';
+      cursor.style.animation = 'cursor-blink 1s step-end infinite';
+      lastRow.appendChild(cursor);
     }
   }, 300 + word.length * 150 + 200);
 }
