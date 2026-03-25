@@ -47,6 +47,12 @@ body::after {
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(218,119,86,0.012) 2px, rgba(218,119,86,0.012) 4px);
 }
 
+/* Block cursor blink for pixel logo */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Grid background */
 body::before {
   content: '';

@@ -303,6 +303,22 @@ function renderPixelLogo() {
       });
     }, 300 + ci * 150);
   }
+
+  // Add blinking block cursor after last letter
+  setTimeout(() => {
+    // Add cursor blocks to each row (a vertical bar of blocks)
+    rows.forEach(row => {
+      // Add gap
+      const gap = document.createElement('div');
+      gap.className = 'px empty';
+      row.appendChild(gap);
+      // Add cursor block
+      const cursor = document.createElement('div');
+      cursor.className = 'px';
+      cursor.style.animation = 'cursor-blink 1s step-end infinite';
+      row.appendChild(cursor);
+    });
+  }, 300 + word.length * 150 + 200);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
