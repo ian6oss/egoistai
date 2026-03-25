@@ -92,22 +92,22 @@ const categories = [
       <div class="max-w-[1200px] mx-auto h-[52px] px-6 flex items-center justify-between">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 no-underline group">
-          <span class="font-bold text-sm" style="color: #da7756; font-family: 'JetBrains Mono', monospace;">$</span>
-          <span class="font-bold text-[13px] tracking-[0.2em] transition-colors group-hover:text-[#da7756]" style="color: #e8e6e3; font-family: 'JetBrains Mono', monospace;">EgoistAI</span>
+          <span class="font-bold text-base" style="color: #da7756; font-family: 'JetBrains Mono', monospace;">$</span>
+          <span class="font-bold text-[15px] tracking-[0.2em] transition-colors group-hover:text-[#da7756]" style="color: #e8e6e3; font-family: 'JetBrains Mono', monospace;">EgoistAI</span>
           <span class="cursor-blink">_</span>
         </a>
 
         <!-- Nav Links (desktop) -->
         <div class="hidden md:flex gap-0.5">
           {categories.map(cat => (
-            <a href={`/articles/category/${cat.slug}`} class="px-3 py-1.5 rounded text-xs transition-all no-underline hover:bg-[rgba(218,119,86,0.08)]" style="color: #a89b8c; font-family: 'JetBrains Mono', monospace;" onmouseover="this.style.color='#e8e6e3'" onmouseout="this.style.color='#a89b8c'">
+            <a href={`/articles/category/${cat.slug}`} class="px-3 py-1.5 rounded text-sm transition-all no-underline hover:bg-[rgba(218,119,86,0.08)]" style="color: #a89b8c; font-family: 'JetBrains Mono', monospace;" onmouseover="this.style.color='#e8e6e3'" onmouseout="this.style.color='#a89b8c'">
               <span style="color: #5a5468; margin-right: 2px;">&gt;</span>{cat.name}
             </a>
           ))}
         </div>
 
         <!-- Subscribe button -->
-        <a href="#newsletter" class="text-xs font-semibold px-3.5 py-1.5 rounded no-underline transition-all" style="font-family: 'JetBrains Mono', monospace; color: #12121f; background: #da7756;" onmouseover="this.style.boxShadow='0 0 24px rgba(218,119,86,0.15)'" onmouseout="this.style.boxShadow='none'">
+        <a href="#newsletter" class="text-sm font-semibold px-4 py-2 rounded no-underline transition-all" style="font-family: 'JetBrains Mono', monospace; color: #1a1a2e; background: #da7756;" onmouseover="this.style.boxShadow='0 0 24px rgba(218,119,86,0.15)'" onmouseout="this.style.boxShadow='none'">
           [Subscribe]
         </a>
       </div>
