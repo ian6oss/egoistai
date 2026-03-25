@@ -137,6 +137,38 @@
   .card-m { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 10px; color: var(--text-muted); padding-top: 10px; border-top: 1px solid var(--border); }
   .card-m .dt::before { content: '$ '; color: var(--gold); }
 
+  /* AD BANNER CARD */
+  .card-ad {
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(218,119,86,0.06) 100%);
+    border: 1px solid rgba(218,119,86,0.3);
+    border-radius: 6px; overflow: hidden; cursor: pointer;
+    transition: all 0.3s; text-decoration: none; display: block;
+  }
+  .card-ad:hover {
+    border-color: rgba(218,119,86,0.6);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 24px rgba(218,119,86,0.12);
+    transform: translateY(-2px);
+  }
+  .card-ad .tbar { background: rgba(218,119,86,0.08); }
+  .card-ad .ad-body { padding: 20px; text-align: center; }
+  .card-ad .ad-icon { font-size: 28px; margin-bottom: 10px; }
+  .card-ad .ad-title {
+    font-family: var(--mono); font-size: 15px; font-weight: 700;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .card-ad .ad-desc {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px;
+  }
+  .card-ad .ad-cta {
+    font-family: var(--mono); font-size: 12px; color: var(--bg-dark);
+    background: var(--gold); padding: 6px 18px; border-radius: 3px;
+    display: inline-block; font-weight: 600;
+  }
+  .card-ad .ad-tag {
+    font-family: var(--mono); font-size: 9px; color: var(--text-muted);
+    margin-top: 10px; letter-spacing: 0.1em;
+  }
+
   /* Glow pulse on carousel */
   @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 20px rgba(218,119,86,0.05); } 50% { box-shadow: 0 0 40px rgba(218,119,86,0.1); } }
   .carousel { animation: glow-pulse 4s ease-in-out infinite; }
@@ -239,6 +271,21 @@
   <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">best-ai-coding-assistants.md</span></div><div class="card-body"><span class="cc ct">TOOLS</span><h3 class="card-title">Best AI Coding Assistants in 2026: Complete Ranking</h3><p class="card-ex">Copilot, Cursor, Claude Code, Windsurf, Cline, Aider — we ranked them all with real-world testing.</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
 
   <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">ai-seo-strategy.md</span></div><div class="card-body"><span class="cc cu">TUTORIALS</span><h3 class="card-title">AI-Powered SEO Strategy: Rank Higher with Less Effort</h3><p class="card-ex">How to use AI for keyword research, content optimization, and programmatic SEO that actually ranks.</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
+
+  <!-- GamsGo Affiliate Banner -->
+  <a class="card-ad" href="https://www.gamsgo.com/partner/uZJ7x" target="_blank" rel="noopener">
+    <div class="tbar">
+      <div class="d dr"></div><div class="d dy"></div><div class="d dg"></div>
+      <span class="tbar-t">gamsgo-deals.sh</span>
+    </div>
+    <div class="ad-body">
+      <div class="ad-icon">$ save --all</div>
+      <div class="ad-title">AI Subscriptions Up to 70% Off</div>
+      <div class="ad-desc">ChatGPT, Claude, Midjourney, Runway — get premium AI tools at a fraction of the price. Shared plans, instant delivery.</div>
+      <span class="ad-cta">[ Check Deals ]</span>
+      <div class="ad-tag">SPONSORED</div>
+    </div>
+  </a>
 
   <div class="card"><div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><span class="tbar-t">best-local-llms.md</span></div><div class="card-body"><span class="cc ct">TOOLS</span><h3 class="card-title">Best Local LLMs in 2026: Run AI Without the Cloud</h3><p class="card-ex">Llama, Mistral, Phi, Qwen, Gemma — which open-source models are worth running locally?</p><div class="card-m"><span class="dt">2026-03-24</span><span>11 min read</span></div></div></div>
 

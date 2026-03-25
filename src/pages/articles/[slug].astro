@@ -20,15 +20,15 @@ const relatedArticles = allArticles
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
 
-const categoryColors: Record<string, string> = {
-  tools: 'bg-[var(--color-primary)]/20 text-[var(--color-primary)]',
-  news: 'bg-blue-500/20 text-blue-400',
-  tutorials: 'bg-purple-500/20 text-purple-400',
-  money: 'bg-yellow-500/20 text-yellow-400',
-  people: 'bg-pink-500/20 text-pink-400',
+const categoryBadgeClass: Record<string, string> = {
+  tools: 'cat-tools',
+  news: 'cat-news',
+  tutorials: 'cat-tutorials',
+  money: 'cat-money',
+  people: 'cat-people',
 };
 
-const badgeClass = categoryColors[article.data.categorySlug] || categoryColors.tools;
+const badgeClass = categoryBadgeClass[article.data.categorySlug] || 'cat-tools';
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -62,7 +62,7 @@ const articleSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
 
   <article class="py-8 md:py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
         <!-- Main Content -->
@@ -70,27 +70,27 @@ const articleSchema = {
           <!-- Header -->
           <header class="mb-8">
             <div class="flex items-center gap-3 mb-4">
-              <a href={`/articles/category/${article.data.categorySlug}`} class={`px-3 py-1 rounded-full text-xs font-semibold ${badgeClass} hover:opacity-80 transition-opacity`}>
-                {article.data.category}
+              <a href={`/articles/category/${article.data.categorySlug}`} class={`cat-badge ${badgeClass} no-underline hover:opacity-80 transition-opacity`}>
+                {article.data.category.toUpperCase()}
               </a>
-              <span class="text-sm text-gray-500">{article.data.readTime}</span>
+              <span class="text-sm" style="color: #5a5468;">{article.data.readTime}</span>
             </div>
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4" style="color: #e8e6e3;">
               {article.data.title}
             </h1>
-            <p class="text-lg text-gray-400 mb-6">{article.data.excerpt}</p>
-            <div class="flex items-center gap-4 text-sm text-gray-500 pb-6 border-b border-white/5">
-              <span>By <strong class="text-gray-300">{article.data.author || 'EgoistAI'}</strong></span>
+            <p class="text-lg mb-6" style="color: #a89b8c;">{article.data.excerpt}</p>
+            <div class="flex items-center gap-4 text-sm pb-6" style="border-bottom: 1px solid rgba(80,72,92,0.6); color: #5a5468;">
+              <span>By <strong style="color: #a89b8c;">{article.data.author || 'EgoistAI'}</strong></span>
               <span>&middot;</span>
-              <time datetime={article.data.date}>
-                {new Date(article.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              <time datetime={article.data.date} style="font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+                <span style="color: #da7756;">$ </span>{new Date(article.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </time>
             </div>
           </header>
 
           <!-- Featured Image -->
           {article.data.image && (
-            <div class="mb-8 rounded-xl overflow-hidden">
+            <div class="mb-8 rounded-lg overflow-hidden" style="border: 1px solid rgba(80,72,92,0.6);">
               <img src={article.data.image} alt={article.data.title} class="w-full h-auto" />
             </div>
           )}
@@ -102,12 +102,12 @@ const articleSchema = {
 
           <!-- Sources -->
           {article.data.sources && article.data.sources.length > 0 && (
-            <div class="mt-10 p-6 bg-[var(--color-card-bg)] rounded-xl border border-white/5">
-              <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Sources</h3>
+            <div class="mt-10 p-6 rounded-lg" style="background: #1a1a2e; border: 1px solid rgba(80,72,92,0.6);">
+              <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: #5a5468; font-family: 'JetBrains Mono', monospace;">Sources</h3>
               <ul class="space-y-2">
                 {article.data.sources.map((source: { name: string; url: string }) => (
                   <li>
-                    <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-sm text-[var(--color-primary)] hover:underline">
+                    <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-sm hover:underline" style="color: #da7756;">
                       {source.name}
                     </a>
                   </li>
@@ -122,14 +122,15 @@ const articleSchema = {
           </div>
 
           <!-- Share Buttons -->
-          <div class="py-6 border-t border-b border-white/5 mb-8">
-            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Share this article</h3>
+          <div class="py-6 mb-8" style="border-top: 1px solid rgba(80,72,92,0.6); border-bottom: 1px solid rgba(80,72,92,0.6);">
+            <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: #5a5468; font-family: 'JetBrains Mono', monospace;">Share this article</h3>
             <div class="flex gap-3">
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.data.title)}&url=${encodeURIComponent(`https://egoistai.com/articles/${article.id}`)}`}
                 target="_blank"
                 rel="noopener"
-                class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-400 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/30 transition-colors"
+                class="flex items-center gap-2 px-4 py-2 rounded text-sm transition-all no-underline"
+                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(80,72,92,0.6); color: #a89b8c; font-family: 'JetBrains Mono', monospace; font-size: 12px;"
               >
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 Tweet
@@ -138,14 +139,16 @@ const articleSchema = {
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://egoistai.com/articles/${article.id}`)}`}
                 target="_blank"
                 rel="noopener"
-                class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-400 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/30 transition-colors"
+                class="flex items-center gap-2 px-4 py-2 rounded text-sm transition-all no-underline"
+                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(80,72,92,0.6); color: #a89b8c; font-family: 'JetBrains Mono', monospace; font-size: 12px;"
               >
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
               </a>
               <button
                 onclick="navigator.clipboard.writeText(window.location.href); this.textContent = 'Copied!';"
-                class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-400 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/30 transition-colors"
+                class="flex items-center gap-2 px-4 py-2 rounded text-sm transition-all cursor-pointer"
+                style="background: rgba(255,255,255,0.03); border: 1px solid rgba(80,72,92,0.6); color: #a89b8c; font-family: 'JetBrains Mono', monospace; font-size: 12px;"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
                 Copy Link
@@ -154,19 +157,22 @@ const articleSchema = {
           </div>
 
           <!-- Newsletter CTA -->
-          <div class="gradient-cta rounded-2xl p-8 mb-8 text-center">
-            <h3 class="text-2xl font-bold text-white mb-2">Want more like this?</h3>
-            <p class="text-white/80 text-sm mb-4">Get the best AI insights delivered weekly.</p>
+          <div class="rounded-lg p-8 mb-8 text-center" style="background: linear-gradient(135deg, #1a1a2e 0%, rgba(218,119,86,0.08) 100%); border: 1px solid rgba(218,119,86,0.3);">
+            <h3 class="text-2xl font-bold mb-2" style="color: #e8e6e3; font-family: 'JetBrains Mono', monospace;">
+              <span style="color: #da7756;">&gt;</span> Want more like this?
+            </h3>
+            <p class="text-sm mb-4" style="color: #a89b8c;">Get the best AI insights delivered weekly.</p>
             <form id="newsletter-form-article" class="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
               <input
                 type="email"
                 name="email"
                 placeholder="your@email.com"
                 required
-                class="flex-1 px-4 py-2.5 rounded-lg text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm"
+                class="flex-1 px-4 py-2.5 rounded text-sm focus:outline-none"
+                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(80,72,92,0.6); color: #e8e6e3; font-family: 'JetBrains Mono', monospace;"
               />
-              <button type="submit" class="px-5 py-2.5 bg-[var(--color-secondary)] text-[var(--color-primary)] text-sm font-bold rounded-lg hover:bg-[var(--color-secondary)]/90 transition-colors whitespace-nowrap">
-                Subscribe
+              <button type="submit" class="px-5 py-2.5 rounded text-sm font-bold transition-colors whitespace-nowrap" style="background: #da7756; color: #12121f; font-family: 'JetBrains Mono', monospace;">
+                [Subscribe]
               </button>
             </form>
           </div>
@@ -179,8 +185,10 @@ const articleSchema = {
           <!-- Related Articles -->
           {relatedArticles.length > 0 && (
             <section>
-              <h2 class="text-2xl font-black text-white mb-6">Related Articles</h2>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <h2 class="text-2xl font-black mb-6" style="color: #e8e6e3; font-family: 'JetBrains Mono', monospace;">
+                <span style="color: #da7756;">&gt;</span> Related Articles
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {relatedArticles.map(related => (
                   <ArticleCard
                     title={related.data.title}
@@ -204,10 +212,10 @@ const articleSchema = {
             <!-- Tags -->
             {article.data.tags && article.data.tags.length > 0 && (
               <div>
-                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Tags</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: #5a5468; font-family: 'JetBrains Mono', monospace;">Tags</h3>
                 <div class="flex flex-wrap gap-2">
                   {article.data.tags.map((tag: string) => (
-                    <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-400">{tag}</span>
+                    <span class="px-3 py-1 rounded text-xs" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(80,72,92,0.6); color: #a89b8c; font-family: 'JetBrains Mono', monospace;">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -219,19 +227,22 @@ const articleSchema = {
             </div>
 
             <!-- Newsletter -->
-            <div class="p-5 bg-[var(--color-card-bg)] rounded-2xl border border-white/5">
-              <h3 class="font-bold text-white mb-2">Stay in the loop</h3>
-              <p class="text-xs text-gray-500 mb-3">Weekly AI tools & insights.</p>
+            <div class="p-5 rounded-lg" style="background: #1a1a2e; border: 1px solid rgba(80,72,92,0.6);">
+              <h3 class="font-bold mb-2" style="color: #e8e6e3; font-family: 'JetBrains Mono', monospace; font-size: 14px;">
+                <span style="color: #da7756;">&gt;</span> Stay in the loop
+              </h3>
+              <p class="text-xs mb-3" style="color: #5a5468;">Weekly AI tools & insights.</p>
               <form id="newsletter-form-article-sidebar" class="flex flex-col gap-2">
                 <input
                   type="email"
                   name="email"
                   placeholder="your@email.com"
                   required
-                  class="px-3 py-2 rounded-lg text-sm bg-white/5 border border-white/10 text-gray-300 placeholder-gray-600 focus:outline-none focus:border-[var(--color-primary)]/50"
+                  class="px-3 py-2 rounded text-sm focus:outline-none"
+                  style="background: rgba(255,255,255,0.05); border: 1px solid rgba(80,72,92,0.6); color: #e8e6e3; font-family: 'JetBrains Mono', monospace;"
                 />
-                <button type="submit" class="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-secondary)] text-sm font-bold rounded-lg hover:bg-[var(--color-primary)]/90 transition-colors">
-                  Subscribe Free
+                <button type="submit" class="px-4 py-2 rounded text-sm font-bold transition-colors" style="background: #da7756; color: #12121f; font-family: 'JetBrains Mono', monospace;">
+                  [Subscribe]
                 </button>
               </form>
             </div>

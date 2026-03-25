@@ -6,16 +6,16 @@ interface Props {
 const { active } = Astro.props;
 
 const categories = [
-  { name: "All", slug: "" },
-  { name: "Tools", slug: "tools" },
-  { name: "News", slug: "news" },
-  { name: "Tutorials", slug: "tutorials" },
-  { name: "Money", slug: "money" },
-  { name: "People", slug: "people" },
+  { name: "all", slug: "" },
+  { name: "tools", slug: "tools" },
+  { name: "news", slug: "news" },
+  { name: "tutorials", slug: "tutorials" },
+  { name: "money", slug: "money" },
+  { name: "people", slug: "people" },
 ];
 ---
 
-<div class="flex flex-wrap gap-2">
+<div class="flex flex-wrap gap-1.5">
   {categories.map(cat => {
     const isActive = active === cat.slug || (!active && cat.slug === "");
     const href = cat.slug ? `/articles/category/${cat.slug}` : "/";
@@ -23,11 +23,12 @@ const categories = [
       <a
         href={href}
         class:list={[
-          "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border",
+          "px-3 py-1 rounded text-[11px] transition-all border no-underline",
           isActive
-            ? "bg-[var(--color-primary)] text-[var(--color-secondary)] border-[var(--color-primary)]"
-            : "bg-white/5 text-gray-400 border-white/10 hover:border-[var(--color-primary)]/50 hover:text-[var(--color-primary)]"
+            ? "border-[#da7756] text-[#da7756] bg-[rgba(218,119,86,0.06)]"
+            : "border-[rgba(80,72,92,0.6)] text-[#a89b8c] bg-transparent hover:border-[#da7756] hover:text-[#da7756]"
         ]}
+        style="font-family: 'JetBrains Mono', monospace;"
       >
         {cat.name}
       </a>

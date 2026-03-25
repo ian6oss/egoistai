@@ -12,45 +12,44 @@ interface Props {
 
 const { title, slug, excerpt, category, categorySlug, image, date, readTime } = Astro.props;
 
-const categoryColors: Record<string, string> = {
-  tools: 'bg-[var(--color-primary)]/20 text-[var(--color-primary)]',
-  news: 'bg-blue-500/20 text-blue-400',
-  tutorials: 'bg-purple-500/20 text-purple-400',
-  money: 'bg-yellow-500/20 text-yellow-400',
-  people: 'bg-pink-500/20 text-pink-400',
+const categoryBadgeClass: Record<string, string> = {
+  tools: 'cat-tools',
+  news: 'cat-news',
+  tutorials: 'cat-tutorials',
+  money: 'cat-money',
+  people: 'cat-people',
 };
 
-const badgeClass = categoryColors[categorySlug] || categoryColors.tools;
+const badgeClass = categoryBadgeClass[categorySlug] || 'cat-tools';
+
+// Generate a filename-like string from the slug
+const filename = slug.replace(/\//g, '-') + '.md';
 ---
 
 <a href={`/articles/${slug}`} class="group block">
-  <article class="card-hover bg-[var(--color-card-bg)] rounded-xl overflow-hidden border border-white/5">
-    <!-- Image -->
-    <div class="aspect-[16/9] overflow-hidden">
-      <img
-        src={image}
-        alt={title}
-        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        loading="lazy"
-      />
+  <article class="terminal-card">
+    <!-- Terminal title bar -->
+    <div class="tbar">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <span class="tbar-title">{filename}</span>
     </div>
-    <!-- Content -->
-    <div class="p-5">
-      <div class="flex items-center gap-3 mb-3">
-        <span class={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold ${badgeClass}`}>
-          {category}
-        </span>
-        <span class="text-xs text-gray-500">{readTime}</span>
-      </div>
-      <h3 class="text-lg font-bold text-white leading-tight mb-2 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">
+    <!-- Card body -->
+    <div class="p-4">
+      <span class={`cat-badge ${badgeClass} mb-2`}>
+        {category.toUpperCase()}
+      </span>
+      <h3 class="text-[15px] font-semibold leading-[1.45] mb-2 transition-colors group-hover:text-[#da7756]" style="color: #e8e6e3;">
         {title}
       </h3>
-      <p class="text-sm text-gray-400 line-clamp-2 mb-3">
+      <p class="text-[13px] leading-[1.55] mb-3.5 line-clamp-2" style="color: #a89b8c;">
         {excerpt}
       </p>
-      <time datetime={date} class="text-xs text-gray-500">
-        {new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-      </time>
+      <div class="flex justify-between items-center pt-2.5" style="border-top: 1px solid rgba(80,72,92,0.6); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #5a5468;">
+        <span><span style="color: #da7756;">$ </span>{new Date(date).toLocaleDateString('en-CA')}</span>
+        <span>{readTime}</span>
+      </div>
     </div>
   </article>
 </a>
