@@ -304,12 +304,15 @@ function renderPixelLogo() {
     }, 300 + ci * 150);
   }
 
-  // Add blinking underscore cursor after pixel logo
+  // Add blinking underscore cursor inline next to last pixel row
   setTimeout(() => {
-    const cursorEl = document.createElement('span');
-    cursorEl.textContent = '_';
-    cursorEl.style.cssText = 'font-family: "JetBrains Mono", monospace; font-size: clamp(48px, 8vw, 90px); font-weight: 900; color: #da7756; animation: cursor-blink 1s step-end infinite; margin-left: 4px; vertical-align: bottom; line-height: 0.8;';
-    container.appendChild(cursorEl);
+    const lastRow = rows[rows.length - 1];
+    if (lastRow) {
+      const cursorEl = document.createElement('span');
+      cursorEl.textContent = '_';
+      cursorEl.style.cssText = 'font-family: "JetBrains Mono", monospace; font-size: 1.5em; font-weight: 900; color: #da7756; animation: cursor-blink 1s step-end infinite; margin-left: 6px; display: inline-flex; align-items: flex-end;';
+      lastRow.appendChild(cursorEl);
+    }
   }, 300 + word.length * 150 + 200);
 }
 
