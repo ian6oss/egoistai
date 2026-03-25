@@ -36,14 +36,14 @@ const filename = slug.replace(/\//g, '-') + '.md';
       <span class="tbar-title">{filename}</span>
     </div>
     <!-- Card body -->
-    <div class="p-4 flex flex-col flex-1">
+    <div class="p-5 flex flex-col flex-1">
       <span class={`cat-badge ${badgeClass} mb-2`}>
         {category.toUpperCase()}
       </span>
-      <h3 class="text-[15px] font-semibold leading-[1.45] mb-2 transition-colors group-hover:text-[#da7756]" style="color: #e8e6e3;">
+      <h3 class="text-[17px] font-semibold leading-[1.45] mb-3 transition-colors group-hover:text-[#da7756]" style="color: #e8e6e3;">
         {title}
       </h3>
-      <p class="text-[13px] leading-[1.55] mb-3.5 line-clamp-2 flex-1" style="color: #a89b8c;">
+      <p class="text-[14px] leading-[1.6] mb-4 line-clamp-3 flex-1" style="color: #a89b8c;">
         {excerpt}
       </p>
       <div class="flex justify-between items-center pt-2.5 mt-auto" style="border-top: 1px solid rgba(80,72,92,0.6); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #5a5468;">
