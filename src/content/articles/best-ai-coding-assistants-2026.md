@@ -4,7 +4,7 @@ excerpt: "We tested every major AI coding assistant so you don't have to. Here's
 category: "Tools"
 categorySlug: "tools"
 image: "/images/best-ai-coding-assistants-2026.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "14 min read"
 author: "EgoistAI"
 featured: false

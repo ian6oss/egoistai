@@ -4,7 +4,7 @@ excerpt: "From a $40,000 startup in a Denny's booth to a $3 trillion AI empire. 
 category: "People"
 categorySlug: "people"
 image: "/images/jensen-huang-nvidia-empire.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

@@ -4,7 +4,7 @@ excerpt: "We tested every major AI video generator so you don't have to. Here's 
 category: "Tools"
 categorySlug: "tools"
 image: "/images/best-ai-video-generators.webp"
-date: "2026-03-24"
+date: "2026-03-25"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false
