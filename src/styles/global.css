@@ -229,6 +229,16 @@ body::before {
   color: #ffffff !important;
 }
 
+/* Bold-starting paragraphs get extra top spacing for readability */
+.prose p > strong:first-child {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem !important;
+}
+
 .prose blockquote {
   border-left: 3px solid var(--color-primary) !important;
   background: var(--color-card-bg) !important;
