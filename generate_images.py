@@ -80,6 +80,34 @@ IMAGES = {
     "openai-headquarters.webp": "a futuristic tech company headquarters building at night, glowing with AI energy, sleek modern architecture",
     "openai-evolution-timeline.webp": "a timeline showing transformation from a small nonprofit lab to a massive tech corporation, growing scale",
     "sam-altman-conference.webp": "a tech leader on a grand stage addressing thousands, massive AI visualization projected behind them",
+
+    # New articles
+    "ai-agents-replacing-saas.webp": "autonomous AI agents replacing traditional software dashboards, robotic hands operating multiple SaaS interfaces simultaneously, glowing automation flows",
+    "ai-freelancing-guide-2026.webp": "a freelancer working on a futuristic laptop with AI tools floating around, showing multiple project screens, remote work setup",
+    "ai-youtube-automation.webp": "AI-powered YouTube content creation pipeline, video thumbnails being generated automatically, faceless channel concept with AI robot editing video",
+    "build-ai-saas-product.webp": "a developer building a SaaS product with AI, holographic code editor and product dashboard floating above laptop, startup energy",
+    "google-gemini-2-5-pro-review.webp": "Google Gemini AI model visualization, multicolored neural pathways forming the shape of a gemini constellation, benchmark charts floating around",
+    "monetize-ai-skills.webp": "ten different AI skill icons arranged in a grid, each glowing with revenue potential, showing diverse ways to earn with AI technology",
+
+    # People
+    "dario-amodei-anthropic-safety.webp": "abstract portrait of an AI safety researcher, neural network patterns forming a protective shield, warm tones with cool tech undertones",
+    "ilya-sutskever-ssi.webp": "a visionary scientist standing at a crossroads between two paths, one leading to chaos and one to safety, abstract AI imagery",
+    "jensen-huang-nvidia-empire.webp": "a powerful figure standing atop a mountain of GPU chips, green light emanating, data center cityscape in background",
+
+    # Tools
+    "ai-voice-cloning-tools.webp": "sound waves transforming into a human voice waveform, AI processing audio data, microphone with digital overlay effects",
+    "best-ai-coding-assistants-2026.webp": "nine AI coding assistant logos represented as glowing orbs floating around an IDE interface, ranking podium in center",
+    "best-ai-video-generators.webp": "AI generating cinematic video frames, film strip transforming from text prompt to rendered scene, multiple video outputs",
+    "best-local-llms-2026.webp": "a personal computer running AI locally, neural network contained within a glass cube on a desk, no cloud connection",
+    "cursor-vs-windsurf-vs-claude-code.webp": "three AI coding interfaces battling in a digital arena, code streams flowing between them, competitive energy",
+
+    # Tutorials
+    "ai-api-integration-guide.webp": "three API endpoints from different AI providers connecting into a single application, colorful data streams merging",
+    "ai-powered-seo-strategy.webp": "search engine results page being optimized by AI robots, ranking arrows going up, keyword visualization",
+    "automate-your-workflow-with-ai.webp": "automated workflow pipeline with AI nodes, emails and documents flowing through automated processing steps",
+    "build-ai-chatbot-no-code.webp": "drag-and-drop chatbot builder interface with conversation bubbles being assembled by AI, no-code visual builder",
+    "mcp-servers-tutorial.webp": "AI assistant connecting to multiple external services through glowing MCP protocol bridges, database and API icons",
+    "rag-tutorial-build-knowledge-base.webp": "documents being chunked into vectors and stored in a glowing knowledge base, retrieval arrows connecting to AI model",
 }
 
 def generate_image(filename, prompt):
