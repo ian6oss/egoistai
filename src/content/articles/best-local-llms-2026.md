@@ -4,7 +4,7 @@ excerpt: "The best open-source LLMs you can run on your own hardware right now â
 category: "Tools"
 categorySlug: "tools"
 image: "/images/best-local-llms-2026.webp"
-date: "2026-03-24"
+date: "2026-03-26"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false

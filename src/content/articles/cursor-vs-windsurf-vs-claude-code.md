@@ -4,7 +4,7 @@ excerpt: "We tested all three AI coding tools head-to-head. The winner depends o
 category: "Tools"
 categorySlug: "tools"
 image: "/images/cursor-vs-windsurf-vs-claude-code.webp"
-date: "2026-03-24"
+date: "2026-03-26"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

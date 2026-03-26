@@ -4,7 +4,7 @@ excerpt: "Stop grinding keywords manually. AI can handle your research, optimiza
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/ai-powered-seo-strategy.webp"
-date: "2026-03-24"
+date: "2026-03-26"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false
