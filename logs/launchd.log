@@ -144,3 +144,81 @@ Remaining drafts: 4
 10:00:03 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
 10:00:03 [build] 33 page(s) built in 977ms
 10:00:03 [build] Complete!
+[main 5c3f83a] content(auto): publish 2 articles 2026-03-26
+ 6 files changed, 85 insertions(+), 4 deletions(-)
+ create mode 100644 logs/cron.log
+ rename src/content/{drafts/tutorials => articles}/ai-api-integration-guide.md (99%)
+ rename src/content/{drafts/tutorials => articles}/ai-powered-seo-strategy.md (99%)
+ rename src/content/{drafts/tools => articles}/best-local-llms-2026.md (99%)
+ rename src/content/{drafts/tools => articles}/cursor-vs-windsurf-vs-claude-code.md (99%)
+=== EgoistAI Draft Publisher ===
+Date: 2026-03-26
+Target: 1 articles
+
+Available drafts: 11
+
+[1] Published: ai-affiliate-marketing-strategy.md
+
+=== Summary ===
+Published: 1 articles
+Remaining drafts: 10
+
+> users-ian-egoistai@0.0.1 build
+> astro build
+
+03:00:01 [content] Syncing content
+03:00:01 [content] Synced content
+03:00:01 [types] Generated 446ms
+03:00:01 [build] output: "static"
+03:00:01 [build] mode: "static"
+03:00:01 [build] directory: /Users/ian/egoistai/dist/
+03:00:01 [build] Collecting build info...
+03:00:01 [build] ✓ Completed in 453ms.
+03:00:01 [build] Building static entrypoints...
+03:00:02 [WARN] [vite] "matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from external module "@astrojs/internal-helpers/remote" but never used in "node_modules/astro/dist/assets/utils/index.js".
+03:00:02 [vite] ✓ built in 599ms
+03:00:02 [vite] ✓ built in 91ms
+03:00:02 [build] Rearranging server assets...
+
+ generating static routes 
+03:00:02   ├─ /articles/category/tools/index.html (+6ms) 
+03:00:02   ├─ /articles/category/news/index.html (+1ms) 
+03:00:02   ├─ /articles/category/tutorials/index.html (+1ms) 
+03:00:02   ├─ /articles/category/money/index.html (+1ms) 
+03:00:02   ├─ /articles/category/people/index.html (+1ms) 
+03:00:02   ├─ /articles/10-ai-tools-replace-marketing-team/index.html (+1ms) 
+03:00:02   ├─ /articles/7-free-ai-tools-you-should-be-using/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-affiliate-marketing-strategy/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-agents-replacing-saas/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-api-integration-guide/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-coming-for-these-jobs-creating-new-ones/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-freelancing-guide-2026/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-image-generator-war-midjourney-dalle-flux-imagen/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-powered-seo-strategy/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-voice-cloning-tools/index.html (+1ms) 
+03:00:02   ├─ /articles/ai-youtube-automation/index.html (+1ms) 
+03:00:02   ├─ /articles/best-ai-coding-assistants-2026/index.html (+1ms) 
+03:00:02   ├─ /articles/best-ai-video-generators/index.html (+1ms) 
+03:00:02   ├─ /articles/best-local-llms-2026/index.html (+1ms) 
+03:00:02   ├─ /articles/build-ai-saas-product/index.html (+1ms) 
+03:00:02   ├─ /articles/build-complete-website-with-ai-30-minutes/index.html (+1ms) 
+03:00:02   ├─ /articles/chatgpt-vs-claude-vs-gemini-ultimate-ai-showdown-2026/index.html (+2ms) 
+03:00:02   ├─ /articles/claude-code-review/index.html (+2ms) 
+03:00:02   ├─ /articles/cursor-vs-windsurf-vs-claude-code/index.html (+1ms) 
+03:00:02   ├─ /articles/dario-amodei-anthropic-safety/index.html (+5ms) 
+03:00:02   ├─ /articles/google-gemini-2-5-pro-review/index.html (+2ms) 
+03:00:02   ├─ /articles/how-i-made-5000-per-month-using-ai/index.html (+1ms) 
+03:00:02   ├─ /articles/ilya-sutskever-ssi/index.html (+1ms) 
+03:00:02   ├─ /articles/jensen-huang-nvidia-empire/index.html (+1ms) 
+03:00:02   ├─ /articles/monetize-ai-skills/index.html (+1ms) 
+03:00:02   ├─ /articles/openai-raised-40-billion-what-it-means/index.html (+1ms) 
+03:00:02   ├─ /articles/prompt-engineering-101-write-better-prompts/index.html (+1ms) 
+03:00:02   ├─ /articles/sam-altman-most-dangerous-man-silicon-valley/index.html (+1ms) 
+03:00:02   ├─ /feed.xml (+16ms) 
+03:00:02   ├─ /index.html (+2ms) 
+03:00:02 ✓ Completed in 82ms.
+
+03:00:02 [build] ✓ Completed in 797ms.
+03:00:02 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+03:00:02 [build] 34 page(s) built in 1.27s
+03:00:02 [build] Complete!
