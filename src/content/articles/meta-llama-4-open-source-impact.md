@@ -4,7 +4,7 @@ excerpt: "Meta dropped Llama 4 and it's genuinely competitive with GPT-4.5 and C
 category: "News"
 categorySlug: "news"
 image: "/images/meta-llama-4-open-source-impact.webp"
-date: "2026-03-26"
+date: "2026-03-27"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false
