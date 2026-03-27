@@ -4,7 +4,7 @@ excerpt: "Stop doing repetitive work like it's 2019. Here's how to wire up AI-po
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/automate-your-workflow-with-ai.webp"
-date: "2026-03-24"
+date: "2026-03-27"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

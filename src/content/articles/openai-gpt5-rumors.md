@@ -4,7 +4,7 @@ excerpt: "OpenAI's GPT-5 is coming and the leaks paint a picture of a model that
 category: "News"
 categorySlug: "news"
 image: "/images/openai-gpt5-rumors.webp"
-date: "2026-03-26"
+date: "2026-03-27"
 readTime: "9 min read"
 author: "EgoistAI"
 featured: false

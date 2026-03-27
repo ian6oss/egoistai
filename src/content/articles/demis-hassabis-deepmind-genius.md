@@ -4,7 +4,7 @@ excerpt: "Demis Hassabis built DeepMind, won a Nobel Prize for AlphaFold, and no
 category: "People"
 categorySlug: "people"
 image: "/images/demis-hassabis-deepmind-genius.webp"
-date: "2026-03-26"
+date: "2026-03-27"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false
