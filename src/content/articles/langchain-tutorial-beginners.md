@@ -4,7 +4,7 @@ excerpt: "LangChain lets you build AI agents that use tools, search the web, and
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/langchain-tutorial-beginners.webp"
-date: "2026-03-26"
+date: "2026-03-27"
 readTime: "14 min read"
 author: "EgoistAI"
 featured: false

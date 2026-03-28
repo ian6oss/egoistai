@@ -4,7 +4,7 @@ excerpt: "Stop copy-pasting context into ChatGPT. MCP servers let Claude talk di
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/mcp-servers-tutorial.webp"
-date: "2026-03-24"
+date: "2026-03-28"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false
