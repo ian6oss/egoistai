@@ -4,7 +4,7 @@ excerpt: "Stop hallucinating. Build a RAG system that grounds your LLM in real d
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/rag-tutorial-build-knowledge-base.webp"
-date: "2026-03-24"
+date: "2026-03-28"
 readTime: "14 min read"
 author: "EgoistAI"
 featured: false
