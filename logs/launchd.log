@@ -855,3 +855,80 @@ WARNING: No drafts available to publish.
 04:00:07 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
 04:00:07 [build] 44 page(s) built in 779ms
 04:00:07 [build] Complete!
+[main a3fceda] content(auto): publish 2 articles 2026-03-30
+ 2 files changed, 79 insertions(+)
+=== EgoistAI Draft Publisher ===
+Date: 2026-03-30
+Target: 1 articles
+
+WARNING: No drafts available to publish.
+
+> users-ian-egoistai@0.0.1 build
+> astro build
+
+09:00:03 [content] Syncing content
+09:00:03 [content] Synced content
+09:00:03 [types] Generated 206ms
+09:00:03 [build] output: "static"
+09:00:03 [build] mode: "static"
+09:00:03 [build] directory: /Users/ian/egoistai/dist/
+09:00:03 [build] Collecting build info...
+09:00:03 [build] ✓ Completed in 213ms.
+09:00:03 [build] Building static entrypoints...
+09:00:04 [WARN] [vite] "matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from external module "@astrojs/internal-helpers/remote" but never used in "node_modules/astro/dist/assets/utils/index.js".
+09:00:04 [vite] ✓ built in 530ms
+09:00:04 [vite] ✓ built in 79ms
+09:00:04 [build] Rearranging server assets...
+
+ generating static routes 
+09:00:04   ├─ /articles/category/tools/index.html (+14ms) 
+09:00:04   ├─ /articles/category/news/index.html (+5ms) 
+09:00:04   ├─ /articles/category/tutorials/index.html (+5ms) 
+09:00:04   ├─ /articles/category/money/index.html (+6ms) 
+09:00:04   ├─ /articles/category/people/index.html (+4ms) 
+09:00:04   ├─ /articles/10-ai-tools-replace-marketing-team/index.html (+3ms) 
+09:00:04   ├─ /articles/7-free-ai-tools-you-should-be-using/index.html (+4ms) 
+09:00:04   ├─ /articles/ai-affiliate-marketing-strategy/index.html (+4ms) 
+09:00:04   ├─ /articles/ai-agents-replacing-saas/index.html (+3ms) 
+09:00:04   ├─ /articles/ai-api-integration-guide/index.html (+4ms) 
+09:00:04   ├─ /articles/ai-coming-for-these-jobs-creating-new-ones/index.html (+3ms) 
+09:00:04   ├─ /articles/ai-freelancing-guide-2026/index.html (+3ms) 
+09:00:04   ├─ /articles/ai-image-generator-war-midjourney-dalle-flux-imagen/index.html (+6ms) 
+09:00:04   ├─ /articles/ai-powered-seo-strategy/index.html (+3ms) 
+09:00:04   ├─ /articles/ai-voice-cloning-tools/index.html (+3ms) 
+09:00:04   ├─ /articles/ai-youtube-automation/index.html (+3ms) 
+09:00:04   ├─ /articles/apple-intelligence-2026-update/index.html (+3ms) 
+09:00:04   ├─ /articles/automate-your-workflow-with-ai/index.html (+3ms) 
+09:00:04   ├─ /articles/best-ai-coding-assistants-2026/index.html (+3ms) 
+09:00:04   ├─ /articles/best-ai-video-generators/index.html (+3ms) 
+09:00:04   ├─ /articles/best-local-llms-2026/index.html (+3ms) 
+09:00:04   ├─ /articles/build-ai-chatbot-no-code/index.html (+3ms) 
+09:00:04   ├─ /articles/build-ai-saas-product/index.html (+3ms) 
+09:00:04   ├─ /articles/build-complete-website-with-ai-30-minutes/index.html (+3ms) 
+09:00:04   ├─ /articles/chatgpt-vs-claude-vs-gemini-ultimate-ai-showdown-2026/index.html (+2ms) 
+09:00:04   ├─ /articles/claude-code-review/index.html (+2ms) 
+09:00:04   ├─ /articles/cursor-vs-windsurf-vs-claude-code/index.html (+2ms) 
+09:00:04   ├─ /articles/dario-amodei-anthropic-safety/index.html (+2ms) 
+09:00:04   ├─ /articles/demis-hassabis-deepmind-genius/index.html (+3ms) 
+09:00:04   ├─ /articles/eu-ai-act-what-developers-need-to-know/index.html (+1ms) 
+09:00:04   ├─ /articles/google-gemini-2-5-pro-review/index.html (+1ms) 
+09:00:04   ├─ /articles/how-i-made-5000-per-month-using-ai/index.html (+1ms) 
+09:00:04   ├─ /articles/ilya-sutskever-ssi/index.html (+1ms) 
+09:00:04   ├─ /articles/jensen-huang-nvidia-empire/index.html (+1ms) 
+09:00:04   ├─ /articles/langchain-tutorial-beginners/index.html (+1ms) 
+09:00:04   ├─ /articles/mcp-servers-tutorial/index.html (+2ms) 
+09:00:04   ├─ /articles/meta-llama-4-open-source-impact/index.html (+3ms) 
+09:00:04   ├─ /articles/monetize-ai-skills/index.html (+3ms) 
+09:00:04   ├─ /articles/openai-gpt5-rumors/index.html (+3ms) 
+09:00:04   ├─ /articles/openai-raised-40-billion-what-it-means/index.html (+2ms) 
+09:00:04   ├─ /articles/prompt-engineering-101-write-better-prompts/index.html (+1ms) 
+09:00:04   ├─ /articles/rag-tutorial-build-knowledge-base/index.html (+6ms) 
+09:00:04   ├─ /articles/sam-altman-most-dangerous-man-silicon-valley/index.html (+7ms) 
+09:00:04   ├─ /feed.xml (+28ms) 
+09:00:04   ├─ /index.html (+4ms) 
+09:00:04 ✓ Completed in 199ms.
+
+09:00:04 [build] ✓ Completed in 838ms.
+09:00:04 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+09:00:04 [build] 44 page(s) built in 1.07s
+09:00:04 [build] Complete!
