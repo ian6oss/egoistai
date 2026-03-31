@@ -4,7 +4,7 @@ excerpt: "AI was supposed to revolutionize medicine. Two years into real deploym
 category: "News"
 categorySlug: "news"
 image: "/images/ai-in-healthcare-2026.webp"
-date: "2026-03-30"
+date: "2026-03-31"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false
