@@ -4,7 +4,7 @@ excerpt: "NVIDIA controls 80%+ of the AI chip market and just unveiled its next 
 category: "News"
 categorySlug: "news"
 image: "/images/nvidia-next-gen-ai-chips.webp"
-date: "2026-03-30"
+date: "2026-03-31"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false
