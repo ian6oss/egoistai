@@ -1104,3 +1104,8 @@ Remaining drafts: 15
 09:00:07 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
 09:00:07 [build] 48 page(s) built in 1.17s
 09:00:07 [build] Complete!
+[main ffbb71e] content(auto): publish 1 article 2026-03-31
+ 5 files changed, 91 insertions(+), 1 deletion(-)
+ rename src/content/{drafts/news => articles}/ai-in-healthcare-2026.md (99%)
+ rename src/content/{drafts/money => articles}/build-ai-agency-2026.md (100%)
+ rename src/content/{drafts/money => articles}/sell-ai-generated-content.md (100%)

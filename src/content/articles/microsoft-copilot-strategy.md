@@ -4,7 +4,7 @@ excerpt: "Microsoft has embedded AI into every product it owns and bet the entir
 category: "News"
 categorySlug: "news"
 image: "/images/microsoft-copilot-strategy.webp"
-date: "2026-03-30"
+date: "2026-03-31"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false
