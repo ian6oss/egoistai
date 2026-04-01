@@ -4,7 +4,7 @@ excerpt: "Before ChatGPT, before deep learning hype, Fei-Fei Li created ImageNet
 category: "People"
 categorySlug: "people"
 image: "/images/fei-fei-li-ai-godmother.webp"
-date: "2026-03-30"
+date: "2026-03-31"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false

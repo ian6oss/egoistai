@@ -1,169 +1,156 @@
 ---
-title: "Ilya Sutskever: The Man Who Left OpenAI to Save the World"
-excerpt: "He co-founded OpenAI, helped fire Sam Altman, then walked away from it all. Now Ilya Sutskever is building SSI — and betting everything on safe superintelligence."
+title: "Ilya Sutskever and SSI: The Man Who Left OpenAI to Build Safe Superintelligence"
+excerpt: "Ilya Sutskever co-founded OpenAI, tried to fire Sam Altman, then left to build something even more ambitious. Inside SSI and the quest for safe superintelligence."
 category: "People"
 categorySlug: "people"
 image: "/images/ilya-sutskever-ssi.webp"
-date: "2026-03-25"
-readTime: "12 min read"
+date: "2026-03-31"
+readTime: "11 min read"
 author: "EgoistAI"
 featured: false
-tags: ["ai", "openai", "ilya-sutskever", "ssi", "ai-safety", "profile", "superintelligence"]
+tags: ["ilya sutskever", "ssi", "openai", "superintelligence", "ai safety"]
 sources:
-  - name: "MIT Technology Review - Ilya Sutskever Profile"
-    url: "https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever/"
-  - name: "Safe Superintelligence Inc. - Official Announcement (June 2024)"
+  - name: "SSI Official Website"
     url: "https://ssi.inc"
-  - name: "Bloomberg - SSI Raises $1 Billion in Funding (September 2024)"
-    url: "https://www.bloomberg.com/news/articles/2024-09-04/safe-superintelligence-raises-1-billion"
-  - name: "TED Talk - Ilya Sutskever on the Future of AI (April 2024)"
-    url: "https://www.ted.com/talks/ilya_sutskever_the_future_possibilities_of_ai"
-  - name: "The New Yorker - Inside the OpenAI Board Crisis"
-    url: "https://www.newyorker.com/magazine/2023/12/11/the-inside-story-of-microsofts-partnership-with-openai"
-  - name: "Reuters - Ilya Sutskever Departs OpenAI (May 2024)"
-    url: "https://www.reuters.com/technology/openai-co-founder-ilya-sutskever-leaves-company-2024-05-14/"
+  - name: "Reuters - Sutskever SSI Funding"
+    url: "https://www.reuters.com/technology/"
+  - name: "The New Yorker - Ilya Sutskever Profile"
+    url: "https://www.newyorker.com"
+  - name: "MIT Technology Review - SSI Analysis"
+    url: "https://www.technologyreview.com"
+  - name: "NeurIPS - Sutskever Research Papers"
+    url: "https://proceedings.neurips.cc"
 ---
 
-Most people in AI want to build the biggest model, ship the fastest product, raise the fattest round. Ilya Sutskever wants to solve a problem that might not have a solution — and he walked away from the most powerful AI company on earth to do it.
+In the history of artificial intelligence, there are researchers, there are builders, and there are prophets. Ilya Sutskever is all three — and the arc of his career reads like a screenplay that would be rejected for being too dramatic.
 
-In June 2024, Sutskever announced Safe Superintelligence Inc. — SSI — a company with one stated goal: build safe superintelligence. Not a chatbot. Not an API product. Not a platform play. Just the single hardest technical problem in the history of computer science, with safety as a non-negotiable constraint.
+He co-authored the paper that launched the deep learning revolution. He co-founded OpenAI and served as its chief scientist, guiding the technical vision that produced GPT-3, GPT-4, and the most consequential AI products in history. He led the board coup that briefly fired Sam Altman — the most dramatic corporate governance crisis in tech since Steve Jobs was ousted from Apple. And then, after the dust settled and Altman returned, Sutskever quietly left the company he helped build to start something even more ambitious.
 
-No product roadmap. No revenue targets. No distractions.
+Safe Superintelligence Inc. (SSI) launched in June 2024 with a single stated mission: build safe superintelligence. Not a chatbot. Not a product. Not a revenue-generating business. Superintelligence — and the safety mechanisms to ensure it doesn't destroy everything.
 
-Either he is the most principled person in AI, or the most delusional. The billion dollars in funding suggests at least a few serious people are betting on the former.
+The fact that arguably the most technically accomplished AI researcher alive chose this as his next act tells you something about where he thinks the technology is heading.
 
-## The Brain Behind the Revolution
+## Who Is Ilya Sutskever?
 
-Ilya Sutskever's resume reads like a greatest-hits album of modern AI. Born in Russia in 1986, he moved to Israel at age five and then to Canada as a teenager. He ended up at the University of Toronto, where he became a PhD student under Geoffrey Hinton — the man widely regarded as the godfather of deep learning.
+### The Academic Foundation
 
-This wasn't an accident. Hinton's lab in the early 2010s was ground zero for the neural network revolution. While the rest of computer science was still skeptical that deep learning would amount to anything, Hinton and his students were proving that neural networks could do things nobody thought possible.
+Born in Russia in 1986 and raised in Israel and Canada, Sutskever's academic pedigree is the stuff of AI legend. He studied under Geoffrey Hinton at the University of Toronto — one of the "godfathers of deep learning" and a 2018 Turing Award winner.
 
-In 2012, Sutskever was part of the team (alongside Hinton and Alex Krizhevsky) that built AlexNet, the convolutional neural network that demolished the competition at the ImageNet challenge and single-handedly reignited the entire field of AI. That paper has been cited over 100,000 times. It is, without exaggeration, the Big Bang of the deep learning era.
+In 2012, Sutskever was one of three authors (with Hinton and Alex Krizhevsky) of the AlexNet paper — the convolutional neural network that demolished the ImageNet competition and is widely credited with launching the modern deep learning era. Before AlexNet, neural networks were considered a niche, somewhat discredited approach to AI. After AlexNet, they became the dominant paradigm. Few single papers have had as much impact on a field.
 
-After a brief stint at Stanford, Sutskever joined Google Brain in 2013. There, he co-authored the foundational paper on sequence-to-sequence learning — the architecture that would eventually evolve into the transformer models powering every major AI system today. He also worked on TensorFlow, Google's open-source machine learning framework that became the industry standard.
+Sutskever then spent two years at Google Brain (2013-2015), where he co-authored the foundational "Sequence to Sequence Learning with Neural Networks" paper that introduced the encoder-decoder architecture for machine translation. This work was a direct precursor to the Transformer architecture that powers every modern LLM.
 
-By 2015, Sutskever was one of the most accomplished AI researchers on the planet. He was 29 years old.
+### The OpenAI Years (2015-2024)
 
-## Co-Founding OpenAI
+Sutskever was a co-founder of OpenAI in 2015, alongside Sam Altman, Greg Brockman, Elon Musk, and others. As Chief Scientist, he was the technical north star for the organization — the person who decided which research directions to pursue and how to push the boundaries of what AI could do.
 
-When Elon Musk and Sam Altman began assembling a team to launch OpenAI in late 2015, Sutskever was the get. He was Google's crown jewel, and convincing him to leave for an unproven nonprofit was considered a major coup.
+Under his technical leadership, OpenAI produced:
+- **GPT-2 (2019):** The first language model that generated text convincing enough to trigger a debate about responsible release
+- **GPT-3 (2020):** The model that demonstrated that scale (175 billion parameters) could produce emergent capabilities that smaller models lacked
+- **DALL-E (2021):** One of the first high-quality text-to-image generation systems
+- **GPT-4 (2023):** The multimodal model that established the frontier of AI capability
 
-"Ilya was the first person we recruited, and the most important," Altman later said. The pitch was simple: build AGI, keep it safe, and keep it open. Google was pulling ahead in AI research. Somebody needed to provide a counterweight. Sutskever, deeply concerned about the concentration of AI power, said yes.
+Colleagues have described Sutskever as the person at OpenAI with the deepest intuition about what would work at scale. While others debated approaches, Sutskever pushed for larger models, more data, and more compute — bets that proved spectacularly correct.
 
-He joined as co-founder and chief scientist, a role he would hold for nearly nine years. And he wasn't a figurehead. Sutskever was the technical backbone of OpenAI. Under his leadership, the research team developed GPT-1, GPT-2, GPT-3, and GPT-4 — each one a leap that redefined what was possible with language models.
+### The November 2023 Crisis
 
-"Without Ilya, there is no GPT," one former OpenAI researcher told MIT Technology Review. "He had an almost religious conviction that scale was the answer, years before anyone else believed it."
+On November 17, 2023, the OpenAI board — with Sutskever as a member — fired Sam Altman as CEO. The reasons were never fully disclosed publicly, though reporting from The New York Times and The Information pointed to fundamental disagreements about the pace of commercialization, safety priorities, and governance.
 
-That conviction — that making models bigger would unlock emergent capabilities — turned out to be spectacularly correct. It also planted the seeds of a crisis.
+Sutskever initially supported the board's decision. Within days, as the company entered chaos — employees threatened mass resignation, Microsoft offered to hire the entire staff, and the board's position became untenable — Sutskever publicly expressed regret and signed a letter calling for Altman's reinstatement.
 
-## The Alignment Obsession
+Altman returned. Sutskever did not speak publicly for months. In May 2024, OpenAI announced his departure with a terse post. Two weeks later, he announced SSI.
 
-Something shifted in Sutskever around 2021. As GPT-3 demonstrated capabilities that surprised even its creators, and as the rush toward GPT-4 intensified, Sutskever became increasingly vocal about a question that most of his colleagues were happy to defer: what happens when these systems become smarter than us?
+What happened during those silent months is one of the most debated questions in the AI community. The prevailing interpretation, supported by reporting from multiple outlets: Sutskever genuinely believed that OpenAI was moving too fast toward commercialization without adequate safety measures, the board action was a sincere (if badly executed) attempt to course-correct, and once it failed, he concluded that the right path was to build something new rather than fight from within.
 
-This wasn't idle philosophizing. Sutskever became convinced — with the same intensity he had brought to scaling — that superintelligent AI was not a distant hypothetical but an approaching reality. And that humanity was nowhere close to ready for it.
+## What Is SSI (Safe Superintelligence Inc.)?
 
-In July 2023, OpenAI announced the Superalignment team, led by Sutskever and Jan Leike. The mission: solve the core technical problem of aligning superintelligent AI systems with human values. OpenAI committed 20% of its compute resources to the effort. Sutskever called it "the most important technical problem of our time."
+SSI is Sutskever's answer to a question that haunts the AI field: how do you build superintelligence safely?
 
-"The future is going to be good for the AIs regardless," Sutskever said at a public event that year. "What we need to figure out is how to make the future good for humans."
+### The Mission
 
-It was a remarkable statement from the chief scientist of the company building the most advanced AI on earth. It was also a warning that almost nobody took seriously enough.
+SSI's stated mission is singular: build safe superintelligence. The company's website, intentionally minimal, describes this as "the most important technical problem of our time." There is no product roadmap, no consumer application, no revenue model beyond investment capital. The entire organization is focused on one goal.
 
-## The Five Days in November
+This is radical in a field where every other major AI lab is simultaneously pursuing commercial products and advancing capabilities. SSI is explicitly not building products. It's building a technology — superintelligent AI with inherent safety properties — and worrying about products later (or never).
 
-Then came November 17, 2023.
+### The Founding Team
 
-The OpenAI board of directors — the small nonprofit board that technically held ultimate authority over the company — voted to fire Sam Altman as CEO. The stated reason was maddeningly vague: he had not been "consistently candid in his communications with the board."
+SSI was co-founded by Sutskever alongside Daniel Gross (former VP at Apple, partner at Y Combinator, and AI investor) and Daniel Levy (a former OpenAI researcher who worked closely with Sutskever). The complementary skill set is intentional: Sutskever brings technical vision, Gross brings operational and fundraising expertise, and Levy brings research execution.
 
-Ilya Sutskever was on that board. He voted to fire Altman.
+### Funding and Scale
 
-The full details of what precipitated the crisis remain partially obscured, but the picture that has emerged is this: Sutskever and other board members had grown increasingly alarmed about the pace of commercialization, the erosion of safety culture, and what they saw as Altman's consolidation of power. Reports suggest that disagreements over how fast to push AI capabilities — particularly around a research breakthrough related to a project internally called Q* — played a role.
+SSI raised $1 billion in its initial funding round, led by Andreessen Horowitz (a16z), Sequoia Capital, and other top-tier investors. The valuation reportedly reached $5 billion — remarkable for a company with no product, no revenue, and fewer than 20 employees at the time.
 
-What followed was chaos. Greg Brockman resigned. Over 700 of OpenAI's 770 employees threatened to leave. Microsoft — which had poured $13 billion into OpenAI — scrambled to contain the fallout. Within five days, Altman was reinstated, the old board was dissolved, and the coup had collapsed.
+The fundraise signals investor confidence in Sutskever specifically. When arguably the most accomplished AI researcher in the world says "superintelligence is coming, and I need to build it safely," investors listen. The $1 billion gives SSI a multi-year runway to pursue research without commercial pressure.
 
-Sutskever found himself on the losing side of the most dramatic power struggle in tech history. He signed the employee letter calling for Altman's return, a decision widely interpreted as a survival move rather than a change of heart.
+Additional reporting from Reuters and The Information indicates that SSI has been aggressively recruiting from top AI labs, with particular focus on researchers working on alignment, interpretability, and scalable oversight — the technical foundations of AI safety.
 
-"I deeply regret my participation in the board's actions," Sutskever posted on X. "I never intended to harm OpenAI. I love everything we've built together and I will do everything I can to reunite the company."
+## What Is "Safe Superintelligence" and Why Does It Matter?
 
-Those were among his last public words as an OpenAI employee.
+### Defining Superintelligence
 
-## The Quiet Exit
+Superintelligence, in the AI context, refers to AI systems that significantly exceed the cognitive capabilities of any human across virtually all domains. Not just better at chess or Go — better at science, strategy, creativity, persuasion, planning, and every other cognitive task.
 
-After November, Sutskever became a ghost. He stopped attending meetings. He was absent from company events. The Superalignment team, the project he had championed as OpenAI's most important initiative, began losing resources and personnel. In May 2024, Jan Leike — Sutskever's co-lead on Superalignment — resigned with a blistering public statement.
+Most leading AI researchers believe superintelligence is possible. Disagreements center on timeline (5 years? 20 years? 50 years?) and risk. Sutskever appears to be in the camp that believes the timeline is shorter than most people expect and the risk is significant enough to warrant a dedicated organization.
 
-"Over the past few months, my weights have shifted from safety to shiny products," Leike wrote on X. "I have been disagreeing with OpenAI leadership about the company's core priorities for quite some time, till we finally reached a breaking point."
+### The Safety Problem
 
-The subtext was impossible to miss: the promises made to Sutskever's safety vision had been broken.
+The core safety challenge with superintelligence: how do you ensure that a system significantly smarter than any human remains aligned with human values and interests? This isn't a trivial question, and existing approaches to AI safety (RLHF, constitutional AI, red teaming) are designed for current AI systems, not for systems that might be fundamentally more capable than their overseers.
 
-On May 14, 2024, Sutskever made it official. He was leaving OpenAI. His departure post was characteristically brief and gracious — thanking Altman and the team, expressing confidence in OpenAI's future. But the message was clear to anyone paying attention. The man who had built OpenAI's technical foundation no longer believed the company could deliver on its original mission.
+Sutskever has spoken (sparingly) about his belief that safety cannot be added as an afterthought — it must be a fundamental property of the architecture. The analogy he's used: you can't make a nuclear reactor safe by adding warning labels. Safety must be engineered into the core design.
 
-## SSI: One Goal, No Distractions
+### SSI's Technical Approach
 
-Exactly one month later, on June 19, 2024, Sutskever revealed what came next.
+SSI has been notably secretive about its technical approach. What's known from hiring patterns, published research from team members, and limited public statements:
 
-Safe Superintelligence Inc. The name itself was a thesis statement. Not "Safe AI" — safe *superintelligence*. Not a research lab with a product arm on the side. A company dedicated to a single technical objective.
+- Focus on **scalable oversight** — methods for human supervisors to effectively guide systems that are more capable than themselves
+- Interest in **interpretability** — understanding what AI systems are doing internally, not just their inputs and outputs
+- Research into **alignment verification** — proving mathematically or empirically that an AI system is aligned with its intended goals
+- Exploration of **novel architectures** that may have inherent safety properties, rather than trying to bolt safety onto existing architectures
 
-"We will pursue safe superintelligence in a straight line, with one focus, one goal, and one product," the announcement read. "We will do it through a small, focused team of the best researchers and engineers."
+The secrecy is deliberate. Sutskever has expressed concern that publishing AI capability research accelerates timelines without proportionally accelerating safety. SSI's decision to operate more quietly than other labs reflects this philosophy.
 
-SSI launched with three co-founders: Sutskever, Daniel Gross (former AI lead at Apple and a well-known investor), and Daniel Levy (a former OpenAI researcher who had worked closely with Sutskever).
+## What Does SSI Mean for the AI Industry?
 
-By September 2024, SSI had raised $1 billion at a $5 billion valuation. The investor list was a who's-who of tech money: Andreessen Horowitz, Sequoia Capital, DST Global, and the SV Angel fund. A billion dollars for a company with no product, no revenue, no customers, and no release timeline.
+### Legitimizing the Safety Mission
 
-It was the most expensive bet on a single person's conviction that the AI industry has ever seen.
+SSI's existence — and particularly Sutskever's involvement — gives enormous legitimacy to the position that AI safety is a tractable, important technical problem worth dedicating top-tier talent and billions of dollars to. Previous safety-focused organizations (like Anthropic, to some extent) have been criticized as either alarmist or commercially motivated. Sutskever's credibility as a pure researcher makes SSI harder to dismiss.
 
-## What "Safe Superintelligence" Actually Means
+### Talent Competition
 
-SSI's premise rests on an idea that sounds simple but is technically staggering: you can build an AI system that is smarter than all of humanity combined, and you can make it safe. Not safe-ish. Not safe-with-caveats. Safe.
+SSI is competing for the same small pool of world-class AI researchers that OpenAI, Anthropic, Google DeepMind, and Meta are fighting over. The pitch is different — "come work on the most important problem in human history without the distraction of products" — and it's resonating with a specific type of researcher who's motivated by impact rather than product launches.
 
-This is a fundamentally different framing than what the rest of the industry is working with.
+### The Philosophical Divide
 
-OpenAI's approach to safety has been, in practice, iterative deployment: release models, observe misuse, patch and improve. Ship first, align later. Their safety team has been through leadership turnover, resource disputes, and public departures. After Sutskever and Leike left, OpenAI restructured its safety governance — but the organizational priority remained clear. Products ship. Safety catches up.
+SSI represents one pole of a fundamental debate in AI: should the focus be on making current AI as useful as possible (the approach of OpenAI, Google, Meta), or on ensuring that future, more powerful AI is safe? Sutskever's implicit answer — that safety of future systems is more important than utility of current ones — is a direct challenge to the commercial labs' priorities.
 
-Anthropic — founded by Dario Amodei, another OpenAI refugee — takes a more integrated approach. Constitutional AI, responsible scaling policies, interpretability research. Anthropic genuinely tries to bake safety into the development process. But Anthropic also ships products. Claude competes with ChatGPT. Enterprise contracts bring in revenue. The tension between safety and commercialization is managed, not eliminated.
+## FAQ: Ilya Sutskever and SSI
 
-SSI's pitch is that it has eliminated that tension entirely. No products means no commercial pressure. No customers means no one pushing for faster releases. No revenue targets means the research team can spend five years on a problem without anyone asking when it ships.
+### What specifically did Sutskever do at OpenAI?
 
-"SSI is a company where the weights of safety and capability are not in tension," Sutskever told the audience at NeurIPS in December 2024. "They are the same weight."
+As Chief Scientist, Sutskever set the technical research agenda, made decisions about model architecture and training approaches, and oversaw the research teams that built GPT-3, GPT-4, DALL-E, and other key systems. He is credited with championing the "scaling hypothesis" — the bet that larger models with more data and compute would exhibit emergent capabilities — which proved to be one of the most important insights in modern AI.
 
-The skeptics — and there are many — point out that this model has its own problems. A billion dollars is a lot of money, but it is not infinite. Without revenue, SSI is burning cash. Without products, it cannot demonstrate progress to the outside world. Without commercial validation, it risks becoming an expensive research lab that publishes interesting papers while the actual future of AI is decided by companies that ship.
+### Why did Sutskever try to fire Sam Altman?
 
-## The Technical Vision
+The full reasons have never been publicly disclosed. Reporting suggests disagreements about the pace of commercialization, safety investment levels, and governance structure. Sutskever apparently believed that OpenAI was prioritizing commercial interests over its original safety-focused mission. The board action was reportedly an attempt to reassert the nonprofit's control over the company's direction.
 
-SSI has been deliberately opaque about its specific research directions, but the broad strokes are discernible from Sutskever's public statements and the backgrounds of the researchers he has recruited.
+### Is SSI building a competitor to ChatGPT?
 
-The core challenge is what the alignment community calls the "superalignment problem": how do you ensure that an AI system vastly more intelligent than humans remains aligned with human values and intentions? You cannot simply train it on human feedback, because a superintelligent system would quickly surpass human ability to evaluate its outputs. You cannot rely on rules, because a sufficiently intelligent system could find ways around any rule set. You need something more fundamental.
+No. SSI has explicitly stated it is not building consumer products. Its focus is on the research problem of building superintelligent AI with inherent safety properties. Whether SSI's eventual technology becomes a product, a platform, or something else entirely is an open question that the company has declined to address publicly.
 
-Sutskever has hinted at approaches involving self-supervised alignment — systems that can evaluate and correct their own alignment properties without relying on human oversight. He has spoken about the need for "provable safety guarantees," mathematical proofs that a system will behave as intended under all conditions.
+### When will SSI release something?
 
-This is, to put it mildly, an unsolved problem. Some researchers believe it is an unsolvable one. But Sutskever has spent his career betting on ideas that the mainstream considered impossible, and he has been right more often than not.
+No timeline has been announced. Given the company's focus on fundamental research rather than product development, and its substantial funding runway ($1 billion+), SSI may not release anything publicly for years. This is by design — the company is structured to avoid the commercial pressure that forces premature releases.
 
-## The Sutskever Paradox
+### Is Sutskever right that superintelligence is coming soon?
 
-Here is the uncomfortable truth about Ilya Sutskever: he is arguably more responsible than any other single person for the current AI arms race, and he is also the person most desperately trying to prevent it from ending badly.
+Opinions vary dramatically among experts. Sutskever, along with researchers like Dario Amodei (Anthropic CEO) and Demis Hassabis (Google DeepMind CEO), appears to believe that the path from current AI to superintelligence is shorter than the public assumes. Others, like Yann LeCun (Meta), argue that current approaches have fundamental limitations that make superintelligence much further away. The honest answer: nobody knows.
 
-He built the scaling paradigm. He proved that making models bigger unlocks capabilities nobody predicted. He created the technical foundation for GPT-4, for ChatGPT, for the entire wave of generative AI that has consumed the tech industry and is now reshaping the global economy.
+## The Bottom Line
 
-And then he looked at what he had built and said: this is going to kill us if we don't figure out alignment.
+Ilya Sutskever's journey — from academic prodigy to OpenAI co-founder to boardroom revolutionary to SSI founder — is the most consequential individual career arc in modern AI. Every chapter has altered the direction of the field.
 
-That is not hypocrisy. It is pattern recognition from the person closest to the data. Sutskever understood the scaling laws better than anyone. He saw the trajectory. And the trajectory terrified him enough to walk away from the most influential position in AI to start over with a blank sheet of paper.
+SSI represents a bet that the most important AI work isn't building the next chatbot — it's ensuring that the technology Sutskever helped create doesn't eventually do more harm than good. Whether you agree with his timeline or his assessment of risk, the fact that someone with his technical credibility is dedicating his career to this problem demands attention.
 
-"My intuition is that superintelligence is going to happen faster than most people think," Sutskever said in his April 2024 TED talk. "And the number one priority should be to make sure it goes well."
+The next few years will reveal whether SSI produces a breakthrough in AI safety, whether the superintelligence timeline Sutskever seems to believe in materializes, and whether the approach of building safety into the foundation — rather than adding it later — proves to be the right one.
 
-## The Road Ahead
-
-As of early 2026, SSI remains pre-product. The company has grown to roughly 30 researchers, operating primarily out of Palo Alto with a secondary office in Tel Aviv. It has made no public announcements about model capabilities, benchmarks, or timelines. The silence is deliberate.
-
-The AI industry, meanwhile, has not waited. OpenAI continues to push the frontier with each new model release. Anthropic has grown into a genuine competitor. Google DeepMind is spending billions. Meta has open-sourced powerful models. Chinese labs are closing the gap.
-
-Sutskever's bet is that all of these efforts are building toward the same destination — superintelligence — and that none of them are adequately preparing for what happens when they get there. He is betting that a small, focused team with enough funding and no commercial distractions can solve the alignment problem before the capability problem solves itself.
-
-It is the most important bet in AI. It might also be the loneliest.
-
-Because here is the thing about Ilya Sutskever: he is not building a company. He is not building a product. He is not even, in the conventional sense, building a business. He is building an answer to a question that the rest of the industry is still pretending they can defer.
-
-The question is simple: when the machine is smarter than everyone in the room, who decides what it wants?
-
-Sutskever left the most powerful AI company on earth because he believes that question cannot wait. Whether SSI finds the answer, or whether the answer even exists, is the trillion-dollar uncertainty hanging over the entire field.
-
-But if anyone on the planet has the technical depth, the intellectual courage, and the sheer bloody-mindedness to take a real shot at it, it is the quiet, intense researcher who once looked at neural networks when nobody believed in them and said: scale it up.
-
-He was right then. The future of humanity might depend on whether he is right again.
+Whatever happens, Ilya Sutskever will be at the center of it. He always has been.

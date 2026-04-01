@@ -4,7 +4,7 @@ excerpt: "Mira Murati was the CTO who launched ChatGPT, briefly became CEO durin
 category: "People"
 categorySlug: "people"
 image: "/images/mira-murati-openai-departure.webp"
-date: "2026-03-30"
+date: "2026-04-01"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false
