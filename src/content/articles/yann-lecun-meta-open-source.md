@@ -4,7 +4,7 @@ excerpt: "Yann LeCun thinks most of the AI industry is wrong — about AGI, abou
 category: "People"
 categorySlug: "people"
 image: "/images/yann-lecun-meta-open-source.webp"
-date: "2026-03-30"
+date: "2026-04-01"
 readTime: "12 min read"
 author: "EgoistAI"
 featured: false

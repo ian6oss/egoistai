@@ -4,7 +4,7 @@ excerpt: "Death by PowerPoint is real. These AI presentation tools promise to sa
 category: "Tools"
 categorySlug: "tools"
 image: "/images/ai-presentation-tools.webp"
-date: "2026-03-30"
+date: "2026-04-01"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false
