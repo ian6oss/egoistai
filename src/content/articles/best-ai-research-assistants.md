@@ -4,7 +4,7 @@ excerpt: "Perplexity, Elicit, Consensus, Semantic Scholar — AI research tools 
 category: "Tools"
 categorySlug: "tools"
 image: "/images/best-ai-research-assistants.webp"
-date: "2026-03-30"
+date: "2026-04-01"
 readTime: "11 min read"
 author: "EgoistAI"
 featured: false

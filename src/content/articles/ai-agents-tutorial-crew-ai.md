@@ -4,7 +4,7 @@ excerpt: "AI agents are the next platform shift. CrewAI lets you build multi-age
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/ai-agents-tutorial-crew-ai.webp"
-date: "2026-03-30"
+date: "2026-04-02"
 readTime: "14 min read"
 author: "EgoistAI"
 featured: false
