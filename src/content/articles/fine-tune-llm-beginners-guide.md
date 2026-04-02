@@ -4,7 +4,7 @@ excerpt: "Fine-tuning sounds intimidating. It's not. This step-by-step guide tak
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/fine-tune-llm-beginners-guide.webp"
-date: "2026-03-30"
+date: "2026-04-02"
 readTime: "14 min read"
 author: "EgoistAI"
 featured: false

@@ -4,7 +4,7 @@ excerpt: "Flux is the hottest open-source image model in 2026. This tutorial wal
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/build-ai-image-app-with-flux.webp"
-date: "2026-03-30"
+date: "2026-04-02"
 readTime: "15 min read"
 author: "EgoistAI"
 featured: false

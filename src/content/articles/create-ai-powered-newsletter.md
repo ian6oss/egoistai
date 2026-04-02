@@ -4,7 +4,7 @@ excerpt: "Build a newsletter that uses AI for research, writing, curation, and d
 category: "Tutorials"
 categorySlug: "tutorials"
 image: "/images/create-ai-powered-newsletter.webp"
-date: "2026-03-30"
+date: "2026-04-02"
 readTime: "13 min read"
 author: "EgoistAI"
 featured: false
