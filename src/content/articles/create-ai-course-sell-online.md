@@ -4,7 +4,7 @@ excerpt: "The AI education market is booming. Ready to stake your claim? Learn h
 category: "Money"
 categorySlug: "money"
 image: "/images/create-ai-course-sell-online.webp"
-date: "2026-04-03"
+date: "2026-04-04"
 readTime: "8 min read"
 author: "EgoistAI"
 featured: false
