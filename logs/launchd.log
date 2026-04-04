@@ -1893,3 +1893,8 @@ Remaining drafts: 24
 09:00:06 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
 09:00:06 [build] 64 page(s) built in 1.24s
 09:00:06 [build] Complete!
+[main 76bfb84] content(auto): publish 1 article 2026-04-04
+ 6 files changed, 220 insertions(+), 333 deletions(-)
+ rename src/content/{drafts/money => articles}/ai-newsletter-monetization.md (100%)
+ rename src/content/{drafts/money => articles}/create-ai-course-sell-online.md (99%)
+ delete mode 100644 src/content/drafts/money/build-ai-agency-2026.md

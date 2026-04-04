@@ -22,213 +22,743 @@ Let's cut straight to it: you don't need OpenAI. You don't need Anthropic. You d
 
 In 2026, local LLMs have crossed the threshold from "interesting toy for hobbyists" to "genuinely useful tools that compete with cloud APIs for a huge range of tasks." The models are better. The tooling is smoother. And the hardware requirements have dropped enough that a decent laptop can run a capable model without melting.
 
-If you care about privacy, cost, latency, or simply owning your own stack — this is the guide you need. We're covering the best models, the best tools to run them, the hardware you actually need, and an honest comparison with cloud APIs so you can decide what makes sense for your situation.
+This isn't another spec-sheet listicle. This is an implementation guide. By the end, you'll have models running on your machine, integrated into your apps, and serving inference through Docker containers. We're covering installation, code, hardware, benchmarks, and real decision-making frameworks.
+
+Let's get your hands dirty.
 
 ## Why Run LLMs Locally?
 
-Before we get into the models, let's talk about why you'd bother.
+**Privacy is the obvious one.** When you send a prompt to a cloud API, your data hits someone else's servers. If you're working with proprietary code, medical records, legal documents, or anything you genuinely can't afford to leak — local inference is the only real answer. Your data never leaves your machine. Period.
 
-**Privacy is the obvious one.** When you send a prompt to OpenAI or Anthropic, your data hits their servers. Their privacy policies are better than they used to be, but "better" isn't "bulletproof." If you're working with proprietary code, medical records, legal documents, or anything you genuinely can't afford to leak — local inference is the only real answer. No terms of service, no data retention policies, no trust required. Your data never leaves your machine.
+**Cost is the second reason.** Cloud API pricing adds up fast. A local model has zero marginal cost per inference. You pay for the hardware once, and every query after that is free. If you're running RAG pipelines, batch processing, or agent loops, the savings compound aggressively.
 
-**Cost is the second reason.** Cloud API pricing adds up fast. GPT-4-level models charge per token, and if you're running any kind of pipeline — RAG, agents, batch processing — costs compound quickly. A local model has zero marginal cost per inference. You pay for the hardware once, and every query after that is free.
-
-**Latency matters too.** No network round-trip. No queue. No rate limits. For applications that need fast responses — real-time coding assistants, local search, interactive tools — local inference wins on speed, especially for smaller models.
+**Latency matters too.** No network round-trip. No queue. No rate limits. For real-time coding assistants, local search, and interactive tools — local inference wins on speed.
 
 **And then there's reliability.** No outages. No API changes. No sudden deprecation of the model you built your product on. Your local setup works until you decide to change it.
 
-## The Best Local LLMs Right Now
+## Hardware Requirements: Know Before You Install
 
-### Meta Llama 3.1 & 3.2
+Before downloading anything, let's make sure your machine can handle it. Here's the real-world hardware matrix — not marketing numbers, actual requirements for usable inference speeds.
 
-Llama remains the gravitational center of open-source AI. Meta's Llama 3.1 (released mid-2024) and Llama 3.2 (late 2024) set the standard that everything else gets measured against.
+### Hardware Requirements by Model Size
 
-**Llama 3.1** comes in 8B, 70B, and 405B parameter versions. The 8B is the sweet spot for most local users — it runs comfortably on 8GB of VRAM and delivers genuinely impressive performance for its size. The 70B model is where things get serious: it competes with GPT-4-class outputs on many benchmarks, but you'll need a beefy GPU (48GB+ VRAM) or aggressive quantization to run it locally. The 405B? Unless you have a server rack, skip it.
+| Model Size | Min VRAM (GPU) | Min RAM (CPU-only) | Recommended GPU | Storage per Model | Expected Speed |
+|-----------|---------------|--------------------|-----------------|--------------------|----------------|
+| 1-3B (Phi-4 Mini, Llama 3.2 3B) | 2 GB | 4 GB | Any modern GPU | 1.5 - 2.5 GB | 40-80 tok/s |
+| 7-8B (Llama 4 Scout 8B, Mistral 7B, Qwen 2.5 7B) | 6 GB | 8 GB | RTX 4060 / M2 | 4 - 6 GB | 25-50 tok/s |
+| 13-14B (Phi-4, Qwen 2.5 14B) | 10 GB | 16 GB | RTX 4070 Ti / M2 Pro | 8 - 10 GB | 15-35 tok/s |
+| 30-34B (DeepSeek-R1 32B, Qwen 2.5 32B) | 20 GB | 32 GB | RTX 4090 / M3 Pro | 18 - 22 GB | 10-20 tok/s |
+| 70B (Llama 3.1 70B, Qwen 2.5 72B) | 40 GB+ | 64 GB | RTX A6000 / M3 Max | 35 - 45 GB | 5-12 tok/s |
+| 100B+ (Llama 4 Scout 109B, DeepSeek-V3) | 80 GB+ | 128 GB | Multi-GPU / M4 Ultra | 60 - 120 GB | 3-8 tok/s |
 
-**Llama 3.2** brought multimodal capabilities and smaller, more efficient variants (1B and 3B) designed for edge devices. The 3B model is shockingly good for its size — useful for summarization, classification, and simple Q&A on machines with as little as 4GB RAM.
+*All sizes assume Q4_K_M quantization (the sweet spot of quality vs. size). Full-precision models require roughly 2x the VRAM.*
 
-**Best for:** General-purpose tasks, coding, reasoning, instruction-following. The 8B model is the default recommendation for anyone starting with local LLMs.
+### Performance Benchmarks: Tokens/Second on Real Hardware
 
-### Mistral & Mixtral
+| Hardware | Llama 4 Scout 8B (Q4) | Qwen 2.5 14B (Q4) | DeepSeek-R1 32B (Q4) | Llama 3.1 70B (Q4) |
+|---------|----------------------|-------------------|---------------------|-------------------|
+| M2 MacBook Air (8GB) | 18 tok/s | 6 tok/s | N/A | N/A |
+| M3 Pro MacBook Pro (18GB) | 42 tok/s | 28 tok/s | 12 tok/s | N/A |
+| M4 Max Mac (64GB) | 58 tok/s | 45 tok/s | 28 tok/s | 14 tok/s |
+| RTX 4060 (8GB VRAM) | 45 tok/s | 11 tok/s* | N/A | N/A |
+| RTX 4070 Ti (12GB VRAM) | 52 tok/s | 35 tok/s | 8 tok/s* | N/A |
+| RTX 4090 (24GB VRAM) | 65 tok/s | 48 tok/s | 25 tok/s | 10 tok/s* |
+| RTX A6000 (48GB VRAM) | 70 tok/s | 55 tok/s | 32 tok/s | 18 tok/s |
 
-Mistral has been punching above its weight since day one. Their models consistently deliver more performance per parameter than competitors, thanks to architectural innovations like sliding window attention and mixture-of-experts (MoE).
+*\* Requires partial CPU offloading, which significantly reduces speed.*
 
-**Mistral 7B** remains one of the best sub-10B models available. It outperforms Llama 2 13B on most benchmarks despite being nearly half the size. Fast, efficient, and well-suited to constrained hardware.
+The Apple Silicon advantage is real. Unified memory means a Mac with 64GB RAM can run a 70B model entirely in memory without the CPU-GPU transfer bottleneck that kills performance on split configurations. If you're buying hardware specifically for local LLMs, Apple Silicon offers the best large-model experience per dollar at the consumer level.
 
-**Mixtral 8x7B** uses a mixture-of-experts architecture — it has 46.7B total parameters but only activates about 12.9B per inference. This means you get 70B-class performance at a fraction of the compute cost. It's one of the most impressive efficiency stories in open-source AI.
+## Step-by-Step Installation: Three Ways to Run Local LLMs
 
-**Mistral Large** and newer Mistral models have continued to push boundaries, though the largest variants demand substantial hardware.
+### Method 1: Ollama (Recommended for Most People)
 
-**Best for:** Efficiency-focused deployments, multilingual tasks (Mistral excels at European languages), and situations where you need strong performance on limited hardware.
+Ollama is the Docker of local LLMs — it just works. Install it, pull a model, and you're generating text in under a minute.
 
-### Microsoft Phi-3 (and Phi-3.5)
-
-Microsoft's Phi series proves that small models trained on high-quality data can outperform much larger models trained on internet slop.
-
-**Phi-3 Mini (3.8B)** is arguably the most impressive small model ever released. It matches or beats Llama 3 8B on several benchmarks despite being half the size. It runs on phones. It runs on Raspberry Pis (slowly, but it runs). For local deployment on consumer hardware, Phi-3 is hard to beat.
-
-**Phi-3 Medium (14B)** scales up the approach and delivers results that compete with models 3-4x its size. If you have a GPU with 16GB VRAM, this is one of the best models you can run.
-
-**Best for:** Resource-constrained environments, mobile/edge deployment, coding tasks, structured reasoning. Not ideal for creative writing or very long-form generation.
-
-### Qwen 2.5
-
-Alibaba's Qwen series has quietly become one of the strongest open-source model families available. Qwen 2.5 deserves more attention than it gets in Western AI circles.
-
-**Qwen 2.5** comes in sizes from 0.5B to 72B. The 7B and 14B variants are particularly strong — the 7B model rivals Llama 3.1 8B on coding and math benchmarks, and the 14B variant punches into territory usually reserved for 30B+ models.
-
-The standout feature is multilingual performance. Qwen handles Chinese, Japanese, Korean, and other Asian languages significantly better than Western-centric models. If your use case involves any of these languages, Qwen should be your first choice.
-
-**Best for:** Multilingual applications (especially CJK languages), coding, math, and reasoning tasks. The 7B model offers exceptional value.
-
-### Google Gemma 2
-
-Google's open-source contribution to the local LLM space. Gemma 2 comes in 2B, 9B, and 27B variants.
-
-**Gemma 2 9B** is the highlight — it's competitive with Llama 3.1 8B and in some benchmarks edges ahead, particularly on knowledge-intensive tasks. Google's training data pipeline (which benefits from Search data) gives Gemma an edge on factual accuracy.
-
-**Gemma 2 27B** is a strong mid-range option if you have a GPU with 24GB+ VRAM. It's not as dominant as Llama 3.1 70B, but it's significantly cheaper to run.
-
-The 2B variant is useful for embedding, classification, and lightweight tasks where you need speed over sophistication.
-
-**Best for:** Knowledge-heavy tasks, factual Q&A, and situations where accuracy matters more than creativity. Good all-rounder.
-
-## The Tools: How to Actually Run These Models
-
-Having a great model file is useless without good tooling. Here are the three tools that matter.
-
-### Ollama
-
-**The easiest way to run local LLMs. Period.**
-
-Ollama wraps llama.cpp in a dead-simple CLI and API. Install it, run `ollama pull llama3.1`, and you're generating text in under a minute. It handles model downloads, quantization selection, GPU detection, and memory management automatically.
+**Install on macOS:**
 
 ```bash
-# Install
-curl -fsSL https://ollama.com/install.sh | sh
+# Download and install via Homebrew
+brew install ollama
 
-# Pull and run a model
-ollama pull llama3.1
-ollama run llama3.1 "Explain quantum computing in one paragraph"
+# Or use the official installer
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Ollama exposes an OpenAI-compatible API on `localhost:11434`, which means most tools and libraries that work with OpenAI's API work with Ollama out of the box. Change the base URL, and you're done.
+**Install on Linux:**
 
-**Pros:** Minimal setup, automatic GPU detection, great model library, active community.
-**Cons:** Less fine-grained control than llama.cpp, limited advanced configuration options.
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
 
-### LM Studio
+# Verify installation
+ollama --version
+```
 
-**The GUI option for people who don't want to touch a terminal.**
+**Install on Windows:**
 
-LM Studio provides a polished desktop application for downloading, configuring, and running local LLMs. It includes a chat interface, a local API server, and model management tools. Think of it as the "Spotify of local LLMs" — browse a library, click download, start chatting.
+Download the installer from [ollama.com/download](https://ollama.com/download) and run it. Ollama runs as a background service.
 
-It also supports the OpenAI API format, so it slots into existing toolchains easily.
+**Download and run your first model:**
 
-**Pros:** Beautiful UI, easy model discovery, supports GGUF and other formats, good for beginners.
-**Cons:** Less scriptable than Ollama, heavier resource usage for the app itself, macOS and Windows only (Linux support is experimental).
+```bash
+# Start the Ollama service (macOS/Linux — starts automatically on Windows)
+ollama serve &
 
-### llama.cpp
+# Pull a model (downloads once, cached locally)
+ollama pull llama4-scout        # Meta's latest, 8B active params
+ollama pull qwen2.5:14b         # Alibaba's powerhouse
+ollama pull deepseek-r1:32b     # Reasoning specialist
+ollama pull phi4                # Microsoft's efficient 14B
+ollama pull mistral             # Mistral 7B, the efficiency king
 
-**Maximum control. Maximum performance. Maximum effort.**
+# Run interactively
+ollama run llama4-scout
 
-llama.cpp is the foundational project that made local LLMs practical. Written in C/C++, it runs LLMs with impressive efficiency across CPUs and GPUs. Both Ollama and LM Studio are built on top of it.
+# Single-shot query
+ollama run llama4-scout "Write a Python function that finds all prime numbers up to n using the Sieve of Eratosthenes"
 
-If you need custom quantization schemes, specific threading configurations, batch processing optimizations, or support for exotic hardware setups — llama.cpp gives you every lever to pull. But you'll be compiling from source and reading documentation.
+# List downloaded models
+ollama list
 
-**Pros:** Best raw performance, maximum flexibility, supports every platform, active development.
-**Cons:** Steep learning curve, no GUI, requires manual model management.
+# Show model details
+ollama show llama4-scout
+```
 
-### Quick Comparison
+**Use Ollama's API (OpenAI-compatible):**
 
-| Feature | Ollama | LM Studio | llama.cpp |
-|---------|--------|-----------|-----------|
-| Ease of use | Excellent | Excellent | Moderate |
-| GUI | No (CLI) | Yes | No |
-| API server | Built-in | Built-in | Manual setup |
-| Performance tuning | Limited | Moderate | Full control |
-| Best for | Developers | Beginners | Power users |
+```bash
+# Chat completions endpoint — drop-in replacement for OpenAI
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama4-scout",
+    "messages": [{"role": "user", "content": "Explain quantum computing in one paragraph"}],
+    "temperature": 0.7
+  }'
 
-## Hardware Requirements: What You Actually Need
+# Generate endpoint (Ollama-native)
+curl http://localhost:11434/api/generate \
+  -d '{
+    "model": "llama4-scout",
+    "prompt": "What is the capital of France?",
+    "stream": false
+  }'
+```
 
-Let's kill the myth that you need a $10,000 GPU rig to run local LLMs. You don't. But more hardware definitely helps.
+**Customize model behavior with a Modelfile:**
 
-### Minimum Viable Setup
+```dockerfile
+# Save as Modelfile
+FROM llama4-scout
 
-- **CPU:** Any modern x86 or ARM processor (M1 Mac or newer works great)
-- **RAM:** 8GB minimum (for 7B models with Q4 quantization)
-- **Storage:** 5-10GB per model (quantized)
-- **GPU:** Optional for 7B models — CPU inference is usable on Apple Silicon
+# Set system prompt
+SYSTEM """You are a senior software engineer. You write clean, well-documented code. 
+You always explain your reasoning before writing code. You prefer simplicity over cleverness."""
 
-A base-model M2 MacBook Air can run Llama 3.1 8B at roughly 10-15 tokens per second. That's fast enough for interactive chat.
+# Adjust parameters
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
+PARAMETER num_ctx 8192
+```
 
-### Recommended Setup
+```bash
+# Create your custom model
+ollama create code-assistant -f Modelfile
 
-- **GPU:** NVIDIA RTX 4060 (8GB) or RTX 4070 (12GB) / Apple M2 Pro or better
-- **RAM:** 16-32GB
-- **Storage:** NVMe SSD with 50GB+ free
+# Run it
+ollama run code-assistant "Refactor this function to use async/await"
+```
 
-This gets you 30-50 tokens/second on 7B models and makes 13-14B models comfortable.
+### Method 2: LM Studio (Best GUI Experience)
 
-### Enthusiast / Production Setup
+LM Studio is for people who want a polished desktop app. Download it from [lmstudio.ai](https://lmstudio.ai), and you get a model browser, chat interface, and local API server with zero terminal usage.
 
-- **GPU:** NVIDIA RTX 4090 (24GB) or RTX A6000 (48GB) / Apple M3 Max or Ultra
-- **RAM:** 64GB+
-- **Storage:** 200GB+ NVMe
+**Setup steps:**
 
-At this level, you can run 70B models (quantized) and get usable speeds. The RTX 4090 handles Q4-quantized Llama 3.1 70B at about 8-12 tokens/second — slower than cloud APIs, but workable.
+1. Download LM Studio from the official site (macOS, Windows, Linux beta)
+2. Launch the app and browse the model catalog
+3. Search for a model (e.g., "llama 4 scout" or "qwen 2.5")
+4. Click Download — LM Studio handles GGUF format selection based on your hardware
+5. Go to the Chat tab, select your model, and start talking
 
-### The Apple Silicon Advantage
+**Run the local API server:**
 
-Apple's unified memory architecture is a genuine advantage for local LLMs. A Mac Studio with an M2 Ultra and 192GB unified memory can run a full 70B model without quantization, using both CPU and GPU cores efficiently. No other consumer hardware can match this for large model inference.
+In LM Studio, go to the "Developer" tab and click "Start Server." This launches an OpenAI-compatible API on `localhost:1234`. Every tool that works with OpenAI's API works with LM Studio — just swap the base URL.
+
+```bash
+# Test the LM Studio server
+curl http://localhost:1234/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "loaded-model",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
+
+### Method 3: llama.cpp (Maximum Control)
+
+llama.cpp is the engine under the hood of both Ollama and LM Studio. Use it directly when you need maximum performance tuning, custom quantization, or batch processing.
+
+**Build from source:**
+
+```bash
+# Clone the repository
+git clone https://github.com/ggerganov/llama.cpp.git
+cd llama.cpp
+
+# Build with GPU support
+
+# For NVIDIA CUDA:
+cmake -B build -DGGML_CUDA=ON
+cmake --build build --config Release -j$(nproc)
+
+# For Apple Metal (macOS):
+cmake -B build -DGGML_METAL=ON
+cmake --build build --config Release -j$(sysctl -n hw.ncpu)
+
+# For CPU only:
+cmake -B build
+cmake --build build --config Release -j$(nproc)
+```
+
+**Download a model (GGUF format from Hugging Face):**
+
+```bash
+# Install huggingface-cli if you don't have it
+pip install huggingface-hub
+
+# Download a quantized model
+huggingface-cli download bartowski/Meta-Llama-4-Scout-17B-16E-Instruct-GGUF \
+  Meta-Llama-4-Scout-17B-16E-Instruct-Q4_K_M.gguf \
+  --local-dir ./models
+```
+
+**Run inference:**
+
+```bash
+# Interactive chat mode
+./build/bin/llama-cli \
+  -m ./models/Meta-Llama-4-Scout-17B-16E-Instruct-Q4_K_M.gguf \
+  --chat-template llama4 \
+  -ngl 99 \        # Offload all layers to GPU
+  -c 8192 \        # Context window size
+  -t 8 \           # Number of CPU threads
+  --interactive
+
+# Start an OpenAI-compatible API server
+./build/bin/llama-server \
+  -m ./models/Meta-Llama-4-Scout-17B-16E-Instruct-Q4_K_M.gguf \
+  --host 0.0.0.0 \
+  --port 8080 \
+  -ngl 99 \
+  -c 8192 \
+  --threads 8
+```
+
+**Quantize your own models:**
+
+```bash
+# Convert a Hugging Face model to GGUF
+python convert_hf_to_gguf.py /path/to/model --outfile model-f16.gguf
+
+# Quantize to Q4_K_M (best balance of quality and size)
+./build/bin/llama-quantize model-f16.gguf model-q4km.gguf Q4_K_M
+
+# Other quantization options:
+# Q2_K   - Smallest, lowest quality (desperate times)
+# Q4_K_M - Sweet spot for most use cases
+# Q5_K_M - Higher quality, ~25% more VRAM
+# Q6_K   - Near-lossless, ~50% more VRAM
+# Q8_0   - Basically lossless, nearly full-size
+```
+
+## Python Integration: Build Apps with Local LLMs
+
+This is where it gets real. Here's how to wire local LLMs into actual applications.
+
+### Using the OpenAI SDK (Works with Ollama, LM Studio, llama.cpp)
+
+Every local LLM server exposes an OpenAI-compatible API, so you can use the official OpenAI Python SDK. Zero new libraries required.
+
+```python
+from openai import OpenAI
+
+# Point to your local server
+# Ollama: http://localhost:11434/v1
+# LM Studio: http://localhost:1234/v1
+# llama.cpp: http://localhost:8080/v1
+client = OpenAI(
+    base_url="http://localhost:11434/v1",
+    api_key="not-needed"  # Local servers don't require auth
+)
+
+# Basic chat completion
+response = client.chat.completions.create(
+    model="llama4-scout",
+    messages=[
+        {"role": "system", "content": "You are a helpful coding assistant."},
+        {"role": "user", "content": "Write a Python decorator that retries failed functions with exponential backoff."}
+    ],
+    temperature=0.3,
+    max_tokens=2048
+)
+
+print(response.choices[0].message.content)
+```
+
+### Streaming Responses
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="not-needed")
+
+stream = client.chat.completions.create(
+    model="llama4-scout",
+    messages=[{"role": "user", "content": "Explain how transformers work in deep learning"}],
+    stream=True
+)
+
+for chunk in stream:
+    content = chunk.choices[0].delta.content
+    if content:
+        print(content, end="", flush=True)
+print()
+```
+
+### RAG Pipeline with Local Embeddings
+
+```python
+"""
+Complete local RAG pipeline — no cloud APIs involved.
+Uses Ollama for both embeddings and generation.
+"""
+import numpy as np
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="not-needed")
+
+
+def get_embedding(text: str, model: str = "nomic-embed-text") -> list[float]:
+    """Generate embeddings using a local model."""
+    response = client.embeddings.create(model=model, input=text)
+    return response.data[0].embedding
+
+
+def cosine_similarity(a: list[float], b: list[float]) -> float:
+    a, b = np.array(a), np.array(b)
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+
+# Your knowledge base
+documents = [
+    "Python's GIL prevents true multi-threading for CPU-bound tasks. Use multiprocessing instead.",
+    "FastAPI supports async endpoints natively and generates OpenAPI docs automatically.",
+    "SQLAlchemy 2.0 uses a new query syntax with select() statements instead of the legacy Query API.",
+    "Redis can be used as both a cache and a message broker for distributed systems.",
+    "Docker containers share the host OS kernel, making them lighter than VMs.",
+]
+
+# Pre-compute embeddings (do this once, store in a vector DB for production)
+doc_embeddings = [get_embedding(doc) for doc in documents]
+
+
+def ask(question: str, top_k: int = 3) -> str:
+    """Answer a question using local RAG."""
+    # Step 1: Find relevant documents
+    q_embedding = get_embedding(question)
+    scores = [cosine_similarity(q_embedding, de) for de in doc_embeddings]
+    top_indices = np.argsort(scores)[-top_k:][::-1]
+    context = "\n".join(f"- {documents[i]}" for i in top_indices)
+
+    # Step 2: Generate answer using local LLM
+    response = client.chat.completions.create(
+        model="llama4-scout",
+        messages=[
+            {
+                "role": "system",
+                "content": "Answer the question based on the provided context. "
+                "If the context doesn't contain relevant information, say so.",
+            },
+            {
+                "role": "user",
+                "content": f"Context:\n{context}\n\nQuestion: {question}",
+            },
+        ],
+        temperature=0.2,
+    )
+    return response.choices[0].message.content
+
+
+# Usage
+answer = ask("How should I handle CPU-bound tasks in Python?")
+print(answer)
+```
+
+### Structured Output with Local LLMs
+
+```python
+"""
+Force local LLMs to output valid JSON for structured data extraction.
+"""
+import json
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="not-needed")
+
+
+def extract_structured_data(text: str) -> dict:
+    """Extract structured data from unstructured text."""
+    response = client.chat.completions.create(
+        model="llama4-scout",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Extract information and return ONLY valid JSON. No markdown, no explanation.\n"
+                    "Schema: {\"name\": str, \"email\": str|null, \"company\": str|null, "
+                    "\"role\": str|null, \"sentiment\": \"positive\"|\"negative\"|\"neutral\"}"
+                ),
+            },
+            {"role": "user", "content": text},
+        ],
+        temperature=0.0,
+        response_format={"type": "json_object"},  # Ollama supports this
+    )
+
+    return json.loads(response.choices[0].message.content)
+
+
+# Example usage
+result = extract_structured_data(
+    "Hi, I'm Sarah Chen from Acme Corp. I'm the VP of Engineering and I'm "
+    "really impressed with your API documentation. Please reach me at sarah@acme.io"
+)
+print(json.dumps(result, indent=2))
+# {
+#   "name": "Sarah Chen",
+#   "email": "sarah@acme.io",
+#   "company": "Acme Corp",
+#   "role": "VP of Engineering",
+#   "sentiment": "positive"
+# }
+```
+
+### Batch Processing with Concurrency
+
+```python
+"""
+Process many prompts efficiently using async requests to a local LLM server.
+"""
+import asyncio
+from openai import AsyncOpenAI
+
+client = AsyncOpenAI(base_url="http://localhost:11434/v1", api_key="not-needed")
+
+SEMAPHORE = asyncio.Semaphore(4)  # Max concurrent requests — tune for your hardware
+
+
+async def process_one(prompt: str) -> str:
+    async with SEMAPHORE:
+        response = await client.chat.completions.create(
+            model="llama4-scout",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+            max_tokens=512,
+        )
+        return response.choices[0].message.content
+
+
+async def batch_process(prompts: list[str]) -> list[str]:
+    tasks = [process_one(p) for p in prompts]
+    return await asyncio.gather(*tasks)
+
+
+# Example: summarize a batch of articles
+prompts = [
+    f"Summarize this in one sentence: {article}"
+    for article in ["Article 1 text here...", "Article 2 text here...", "Article 3 text here..."]
+]
+
+results = asyncio.run(batch_process(prompts))
+for r in results:
+    print(r)
+```
+
+## Docker Setup: Containerized LLM Servers
+
+Running local LLMs in Docker is the cleanest way to deploy them as microservices — isolated, reproducible, and easy to tear down.
+
+### Ollama in Docker
+
+```bash
+# Basic CPU-only setup
+docker run -d \
+  --name ollama \
+  -p 11434:11434 \
+  -v ollama_data:/root/.ollama \
+  ollama/ollama
+
+# With NVIDIA GPU support (requires nvidia-container-toolkit)
+docker run -d \
+  --name ollama-gpu \
+  --gpus all \
+  -p 11434:11434 \
+  -v ollama_data:/root/.ollama \
+  ollama/ollama
+
+# Pull a model into the container
+docker exec ollama ollama pull llama4-scout
+
+# Test it
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "llama4-scout", "messages": [{"role": "user", "content": "Hello!"}]}'
+```
+
+### Docker Compose for a Full Local AI Stack
+
+```yaml
+# docker-compose.yml
+# A complete local AI stack: LLM server + vector database + web UI
+version: "3.9"
+
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # Open WebUI — ChatGPT-like interface for your local models
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - webui_data:/app/backend/data
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  # ChromaDB — local vector database for RAG
+  chromadb:
+    image: chromadb/chroma
+    container_name: chromadb
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  webui_data:
+  chroma_data:
+```
+
+```bash
+# Launch the full stack
+docker compose up -d
+
+# Pull models
+docker exec ollama ollama pull llama4-scout
+docker exec ollama ollama pull nomic-embed-text
+
+# Access:
+# - Chat UI: http://localhost:3000
+# - Ollama API: http://localhost:11434
+# - ChromaDB: http://localhost:8000
+```
+
+### llama.cpp Server in Docker
+
+```dockerfile
+# Dockerfile.llamacpp
+FROM ghcr.io/ggerganov/llama.cpp:server
+
+# Models mounted at runtime via volume
+ENV MODEL_PATH=/models/model.gguf
+
+ENTRYPOINT ["llama-server", \
+  "--model", "/models/model.gguf", \
+  "--host", "0.0.0.0", \
+  "--port", "8080", \
+  "--ctx-size", "8192", \
+  "--n-gpu-layers", "99", \
+  "--threads", "8"]
+```
+
+```bash
+# Run with a model directory mounted
+docker run -d \
+  --name llama-server \
+  --gpus all \
+  -p 8080:8080 \
+  -v /path/to/your/models:/models \
+  ghcr.io/ggerganov/llama.cpp:server \
+  --model /models/your-model-Q4_K_M.gguf \
+  --host 0.0.0.0 --port 8080 \
+  --ctx-size 8192 --n-gpu-layers 99
+```
+
+## Model Comparison: Which Model for Which Task
+
+Not all models are created equal. Here's the honest breakdown of which model to grab for each job in 2026.
+
+### The Contenders
+
+**Meta Llama 4 Scout** — Meta's latest open-weight release uses a Mixture-of-Experts architecture with 109B total parameters but only 17B active per forward pass. The 8B-active variant is the new default recommendation for local use. Excellent at general-purpose tasks, reasoning, and long-context work (up to 1M tokens with 16 experts). The most well-rounded model available.
+
+**Mistral Large & Mistral 7B** — Mistral continues to punch above its weight. Mistral 7B remains the efficiency king for constrained hardware. Mistral's larger models (Mistral Large 2, Codestral) are competitive at the frontier but require serious hardware. Exceptional multilingual performance, especially for European languages.
+
+**Microsoft Phi-4 & Phi-4 Mini** — The "small model, big brain" play. Phi-4 (14B) trained on curated high-quality data outperforms many models 3x its size on reasoning and coding benchmarks. Phi-4 Mini (3.8B) is the best model you can run on a phone or Raspberry Pi that still produces coherent, useful output. Weaknesses: creative writing and very long-form generation.
+
+**Qwen 2.5 (7B / 14B / 32B / 72B)** — Alibaba's dark horse that's no longer a dark horse. The 7B and 14B variants are outright best-in-class for their size on coding and math. The 32B "Coder" variant is arguably the best local coding model available. Dominant for CJK language tasks. The 72B model competes with cloud frontier models on many benchmarks.
+
+**DeepSeek-R1 (7B / 32B / 70B)** — The reasoning specialist. DeepSeek-R1 uses chain-of-thought reasoning by default, showing its work before arriving at an answer. This makes it slower (it generates more tokens) but dramatically more accurate on math, logic, science, and complex analysis. The 32B distilled variant is the sweet spot — runs on an RTX 4090 and delivers reasoning quality that punches way above its weight class.
+
+### Decision Matrix: Which Model for Which Task
+
+| Task | Best Model | Runner-Up | Why |
+|------|-----------|-----------|-----|
+| **General assistant / chat** | Llama 4 Scout 8B | Qwen 2.5 14B | Most well-rounded, fast, great instruction following |
+| **Code generation** | Qwen 2.5 Coder 32B | DeepSeek-Coder-V2 | Top coding benchmarks, understands complex codebases |
+| **Code review / refactoring** | DeepSeek-R1 32B | Qwen 2.5 Coder 32B | Chain-of-thought catches subtle bugs |
+| **Math / logic problems** | DeepSeek-R1 32B | Qwen 2.5 32B | Built for step-by-step reasoning |
+| **Creative writing** | Llama 4 Scout | Mistral 7B | Better prose, more natural voice |
+| **Summarization** | Phi-4 | Llama 4 Scout 8B | Fast, accurate, efficient |
+| **Data extraction / JSON** | Qwen 2.5 14B | Phi-4 | Excellent structured output compliance |
+| **Multilingual (CJK)** | Qwen 2.5 14B+ | Llama 4 Scout | Trained on massive CJK corpus |
+| **Multilingual (European)** | Mistral 7B | Llama 4 Scout | Mistral's strongest differentiator |
+| **Edge / mobile / IoT** | Phi-4 Mini (3.8B) | Llama 3.2 3B | Best quality-per-parameter ratio |
+| **RAG / retrieval** | Llama 4 Scout | Qwen 2.5 14B | Strong context-following, less hallucination |
+| **Agentic / tool-use** | Qwen 2.5 32B | Llama 4 Scout | Best function-calling accuracy at this size |
+
+### The "Just Tell Me What to Download" Guide
+
+- **You have 8 GB RAM, no GPU:** Phi-4 Mini (3.8B Q4) — it's the only model that runs well here and still produces quality output.
+- **You have 16 GB RAM or 8 GB VRAM:** Llama 4 Scout 8B-active (Q4) — the default recommendation for a reason.
+- **You have 24 GB VRAM (RTX 4090):** Qwen 2.5 Coder 32B (Q4) for code, DeepSeek-R1 32B (Q4) for reasoning, Llama 4 Scout for general chat. Download all three — switching models in Ollama takes seconds.
+- **You have 48+ GB VRAM or Apple Silicon with 64+ GB:** Go big. Qwen 2.5 72B or Llama 3.1 70B (Q4). You'll get cloud-competitive quality at zero marginal cost.
+
+## Troubleshooting Common Issues
+
+Local LLMs mostly just work in 2026, but when they don't, here's what's usually wrong.
+
+### "Model is too slow" (< 5 tokens/sec)
+
+**Cause:** Model is running on CPU instead of GPU, or the model is too large for your VRAM and is spilling to system RAM.
+
+```bash
+# Check if Ollama is using your GPU
+ollama ps
+
+# For NVIDIA, verify CUDA is detected
+nvidia-smi
+
+# Force GPU layers in llama.cpp (99 = all layers on GPU)
+./build/bin/llama-cli -m model.gguf -ngl 99
+```
+
+**Fix:** Use a smaller model or more aggressively quantized version (Q4_K_M instead of Q6_K). If your model fits 90% in VRAM, consider Q3_K_M quantization to squeeze it in entirely — partial offloading is a performance killer.
+
+### "Out of memory" / OOM crashes
+
+**Cause:** Model + context window exceeds available memory.
+
+```bash
+# Reduce context size (default is often 4096 or 8192)
+ollama run llama4-scout --num-ctx 2048
+
+# In llama.cpp, set explicit context size
+./build/bin/llama-cli -m model.gguf -c 2048 -ngl 99
+```
+
+**Fix:** Context window is a hidden memory hog. A 7B model at Q4 with 8K context uses about 6 GB VRAM. The same model at 32K context uses about 10 GB. Reduce context window first before switching to a smaller model.
+
+### Ollama can't find GPU / no CUDA
+
+```bash
+# Make sure NVIDIA drivers are up to date
+nvidia-smi  # Should show driver version and CUDA version
+
+# On Linux, ensure the NVIDIA container toolkit is installed for Docker
+sudo apt install nvidia-container-toolkit
+sudo systemctl restart docker
+
+# Reinstall Ollama if GPU detection fails
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+### llama.cpp build fails
+
+```bash
+# Missing CUDA toolkit (NVIDIA)
+sudo apt install nvidia-cuda-toolkit
+
+# Missing Metal framework (macOS) — update Xcode command line tools
+xcode-select --install
+
+# CMake too old
+pip install cmake --upgrade
+
+# Clean rebuild
+rm -rf build && cmake -B build -DGGML_CUDA=ON && cmake --build build -j$(nproc)
+```
+
+### Model outputs garbage / wrong language
+
+**Cause:** Wrong chat template or missing system prompt.
+
+```bash
+# Ollama handles templates automatically, but for llama.cpp:
+# Always specify the correct chat template
+./build/bin/llama-cli -m model.gguf --chat-template llama4  # For Llama 4
+./build/bin/llama-cli -m model.gguf --chat-template chatml   # For Qwen, Phi
+./build/bin/llama-cli -m model.gguf --chat-template mistral  # For Mistral
+```
+
+### High memory usage even after stopping
+
+```bash
+# Ollama keeps models loaded in memory for fast switching
+# Unload all models explicitly
+curl http://localhost:11434/api/generate -d '{"model": "llama4-scout", "keep_alive": 0}'
+
+# Or set a shorter keep-alive globally
+export OLLAMA_KEEP_ALIVE=5m  # Unload after 5 minutes of inactivity
+```
 
 ## Local LLMs vs. Cloud APIs: The Honest Comparison
 
-Here's where we stop cheerleading and get real.
+Let's stop cheerleading and get real.
 
-### Where Local Wins
+**Where local wins:** Privacy (absolute, no contest), cost at scale (free after hardware), latency for small models, reliability (no outages), and offline use.
 
-- **Privacy:** Absolute. No contest. Data never leaves your machine.
-- **Cost at scale:** After hardware costs are amortized, local inference is essentially free.
-- **Latency:** No network overhead. Faster for small models.
-- **Reliability:** No outages, no rate limits, no API changes.
-- **Offline use:** Works on airplanes, in secure facilities, anywhere.
+**Where cloud wins:** Raw capability on frontier models, speed on 70B+ models via massive GPU clusters, zero maintenance, and cutting-edge features (vision, real-time voice, tool use at scale).
 
-### Where Cloud Wins
+**The real answer:** Run both. Use local models for high-volume low-complexity tasks (summarization, classification, extraction, embedding), privacy-sensitive workflows, development iteration, and RAG pipelines. Use cloud APIs for tasks requiring frontier intelligence, production apps needing the absolute best quality, and one-off complex queries.
 
-- **Raw capability:** GPT-4o, Claude Opus, and Gemini Ultra are still meaningfully better than any local model for complex reasoning, nuanced writing, and multi-step tasks. The gap has narrowed dramatically, but it exists.
-- **Speed on large models:** Cloud providers run massive GPU clusters optimized for inference. Their 70B+ model speeds beat anything you can do locally.
-- **Zero maintenance:** No driver updates, no model management, no hardware failures to deal with.
-- **Cutting-edge features:** Function calling, vision, real-time voice — cloud APIs ship new capabilities faster.
-
-### The Real Answer
-
-Most serious users should run both. Use local models for:
-- High-volume, low-complexity tasks (summarization, classification, extraction)
-- Privacy-sensitive workflows
-- Development and prototyping (iterate without burning API credits)
-- Embedding generation and RAG pipelines
-
-Use cloud APIs for:
-- Tasks requiring frontier-model intelligence
-- Production applications where you need the absolute best output quality
-- One-off complex queries where cost per query is negligible
-
-## Who Should Go Local?
-
-**Developers and engineers:** Yes, absolutely. Run Ollama with Llama 3.1 8B or Qwen 2.5 7B as your coding assistant. Use it for code review, documentation, test generation. The models are good enough, and the zero-cost iteration loop is invaluable.
-
-**Privacy-conscious professionals:** Lawyers, doctors, financial analysts — anyone handling sensitive data should seriously consider local inference. The compliance benefits alone justify the setup effort.
-
-**Hobbyists and tinkerers:** If you enjoy building things, local LLMs are endlessly interesting. Fine-tuning, prompt engineering, building custom tools — there's a deep rabbit hole here.
-
-**Small businesses on a budget:** If you're spending $200+/month on API costs, a one-time $500-1000 hardware investment pays for itself quickly.
-
-**Everyone else:** Start with Ollama. Pull a model. Try it. The barrier to entry has never been lower, and you might be surprised at what a 7B model running on your laptop can do.
+A practical split: route 80% of your inference through local models and 20% through cloud APIs. Your costs drop by 80% and your privacy surface shrinks dramatically.
 
 ## The Bottom Line
 
-Local LLMs in 2026 aren't a compromise — they're a legitimate choice. The models are good. The tools are mature. The hardware requirements are reasonable. You lose some capability compared to the best cloud models, but you gain privacy, cost savings, and independence.
+Local LLMs in 2026 aren't a compromise — they're a legitimate choice. The models are good. The tools are mature. The hardware requirements are reasonable. And now you have the installation commands, the Python code, the Docker configs, and the decision frameworks to actually ship something with them.
 
-The open-source AI ecosystem has delivered on its promise. Meta, Mistral, Microsoft, Alibaba, and Google are all shipping competitive open models, and the community tooling around them is excellent. Whether you're a developer building AI-powered applications, a professional handling sensitive data, or just someone who wants to own their tech stack — there's never been a better time to go local.
+The open-source AI ecosystem has delivered. Meta, Mistral, Microsoft, Alibaba, Google, and DeepSeek are all shipping competitive open models. Ollama makes running them trivial. The OpenAI-compatible API means your existing code works with zero changes.
 
 Stop renting intelligence. Start owning it.

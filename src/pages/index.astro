@@ -65,7 +65,7 @@ function getCatClass(slug: string): string {
           {featuredArticles.map(article => (
             <div class="carousel-slide">
               <div class="card-img-wrap">
-                <img class="card-img" src={article.data.image} alt={article.data.title} loading="lazy" />
+                <img class="card-img" src={article.data.image} alt={article.data.title} width="600" height="338" loading="lazy" decoding="async" />
                 <div class="card-img-overlay"></div>
               </div>
               <a href={`/articles/${article.id}`} class="no-underline block" style="color: inherit;">

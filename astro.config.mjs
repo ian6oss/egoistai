@@ -2,12 +2,21 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import rehypeLazyImages from './src/plugins/rehype-lazy-images.mjs';
 
 export default defineConfig({
   site: 'https://egoistai.com',
   output: 'static',
+  markdown: {
+    rehypePlugins: [rehypeLazyImages],
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
 });

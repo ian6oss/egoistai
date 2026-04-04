@@ -273,6 +273,10 @@ body::before {
 
 .prose img {
   border-radius: 0.75rem !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 /* Ad slot placeholder */

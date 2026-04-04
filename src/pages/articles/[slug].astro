@@ -91,7 +91,17 @@ const articleSchema = {
           <!-- Featured Image -->
           {article.data.image && (
             <div class="mb-8 rounded-lg overflow-hidden" style="border: 1px solid rgba(80,72,92,0.6);">
-              <img src={article.data.image} alt={article.data.title} class="w-full h-auto" />
+              <img
+                src={article.data.image}
+                alt={article.data.title}
+                class="w-full h-auto"
+                width="800"
+                height="450"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                style="aspect-ratio: 16/9;"
+              />
             </div>
           )}
 
