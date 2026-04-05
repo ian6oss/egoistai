@@ -4,7 +4,7 @@ excerpt: "The wild west of AI is officially over. In 2026, global regulation is 
 category: "News"
 categorySlug: "news"
 image: "/images/ai-regulation-2026-global-overview.webp"
-date: "2026-04-03"
+date: "2026-04-04"
 readTime: "10 min read"
 author: "EgoistAI"
 featured: false

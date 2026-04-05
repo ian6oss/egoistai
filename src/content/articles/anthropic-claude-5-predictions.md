@@ -4,7 +4,7 @@ excerpt: "Anthropic's Claude 5 is looming, and it's not just another incremental
 category: "News"
 categorySlug: "news"
 image: "/images/anthropic-claude-5-predictions.webp"
-date: "2026-04-03"
+date: "2026-04-04"
 readTime: "8 min read"
 author: "EgoistAI"
 featured: false
