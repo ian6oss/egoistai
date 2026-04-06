@@ -4,7 +4,7 @@ excerpt: "Don't dismiss Grok as just another AI chatbot. Elon Musk's xAI is play
 category: "People"
 categorySlug: "people"
 image: "/images/elon-musk-xai-grok.webp"
-date: "2026-04-03"
+date: "2026-04-06"
 readTime: "8 min read"
 author: "EgoistAI"
 featured: false

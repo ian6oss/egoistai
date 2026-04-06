@@ -4,7 +4,7 @@ excerpt: "Tired of AI gatekeepers? Andrej Karpathy cut through the BS. Discover 
 category: "People"
 categorySlug: "people"
 image: "/images/andrej-karpathy-ai-education.webp"
-date: "2026-04-03"
+date: "2026-04-05"
 readTime: "9 min read"
 author: "EgoistAI"
 featured: false

@@ -4,7 +4,7 @@ excerpt: "Tired of AI hype-bros and snake oil? We cut through the noise to bring
 category: "People"
 categorySlug: "people"
 image: "/images/ai-influencers-worth-following.webp"
-date: "2026-04-03"
+date: "2026-04-05"
 readTime: "9 min read"
 author: "EgoistAI"
 featured: false
